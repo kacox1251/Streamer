@@ -32,12 +32,6 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		completed: {
 			type: DataTypes.BOOLEAN
-		},
-		love_it: {
-			type: DataTypes.BOOLEAN
-		},
-		hate_it: {
-			type: DataTypes.BOOLEAN
 		}
 	});
 
