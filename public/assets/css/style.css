@@ -1,0 +1,27 @@
+body {
+  background-color: #39998e;
+}
+
+.darkGreen {
+  background-color: #2b4d59;
+  color: #ffdc7c;
+  text-align: center;
+  float: none !important;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5%;
+}
+
+
+.item {
+  width:200px; 
+  height:250px; 
+  background-color:#da674a;
+}
+
+#chart-container {
+  position: relative; 
+  height:100%; 
+  width:100%;
+}
+
