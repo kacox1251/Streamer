@@ -4,8 +4,6 @@
 // want to watch
 // completed default false
 // watching default false
-// love it
-// hate it
 // foreign key pointing to user id, pointing to user id will come in with the route files with the where and includes stuff
 
 module.exports = function(sequelize, DataTypes) {
