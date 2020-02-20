@@ -35,9 +35,13 @@ $(document).ready(function () {
     }
   });
 
+  let userId = //how are we grabbing this from the currently logged in data?
 
-  $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.email);
-  });
+  const getUserData = (userId) => {
+    //  
+    $.get("/api/authors/{userId}", someFunctionToPrintItOutOrWhatever);
+  };
+
+  getUserData();
 
 });

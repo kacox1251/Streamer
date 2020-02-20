@@ -1,17 +1,16 @@
 body {
-  background-color: #39998e;
+  background-color: #ffdc7c;
 }
 
 .darkGreen {
   background-color: #2b4d59;
-  color: #ffdc7c;
+  color: #ffaa67;
   text-align: center;
   float: none !important;
   margin-left: auto;
   margin-right: auto;
   padding: 5%;
 }
-
 
 .item {
   width:200px; 
@@ -28,4 +27,9 @@ body {
 #streamer-logo {
   position: relative;
   width: 200px;
+}
+
+.carouselImage {
+  height:250px;
+  width:200px;
 }
