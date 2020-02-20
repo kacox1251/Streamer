@@ -32,6 +32,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.js"></script>
     </head>
+
     <body>
         <div>
           <nav class="canvas-interactive-wrapper">
@@ -75,7 +76,6 @@
         
         {{{body}}}
 
-
         <script>
           $(".dropdown-trigger").dropdown();
 
@@ -91,16 +91,16 @@
             isPausedWhenNotInView: true,
             stateTransitionSpeed: 500,
             states : {
-                "default-state": {
-                    gradients: [
-                      ['#2b4d59', '#39998e'],
-                      ['#39998e', '#ffdc7c'],
-                      ['#ffdc7c', '#ffaa67'],
-                      ['#ffaa67', '#da674a'],
-                      ['#da674a', '#2b4d59']
-                    ],
-                    transitionSpeed: 5000
-                }
+              "default-state": {
+                gradients: [
+                    ['#2b4d59', '#39998e'],
+                    ['#39998e', '#ffdc7c'],
+                    ['#ffdc7c', '#ffaa67'],
+                    ['#ffaa67', '#da674a'],
+                    ['#da674a', '#2b4d59']
+                ],
+                transitionSpeed: 5000
+              }
             }
           });
         </script>
