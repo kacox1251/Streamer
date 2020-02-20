@@ -13,15 +13,22 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  {{!-- Fonts --}}
+  <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Calistoga&display=swap" rel="stylesheet">
+
   <!-- Internal styling -->
-  <link rel="stylesheet" href="../../public/assets/css/style.css">
-  <link rel="stylesheet" href="../../public/assets/css/granim-style.css">
+  {{!-- changed routes to stylesheet, they were not loading as was. Public has been declared for access. --}}
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/granim-style.css">
 
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/img/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../public/assets/img/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/img/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="../../public/assets/img/favicon_io/site.webmanifest">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="assets/img/favicon_io/site.webmanifest">
+
 </head>
 
 <body>
@@ -30,7 +37,7 @@
       <canvas id="canvas-interactive"></canvas>
       <div class="nav-wrapper cta-wrapper">
         <a href="#!" class="brand-logo" style="color: black;"><img id="streamer-logo"
-            src="../img/streamer-logo.png"></a>
+            src="assets/img/streamer-logo.png"></a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger" style="color: black;"><i
             class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
@@ -71,7 +78,6 @@
   </ul>
 
   <!-- Compiled and minified JavaScript -->
-  <script src="../../public/assets/js/profile.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
@@ -79,12 +85,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.js"></script>
+  {{!-- This needs to be called last so it can override other options --}}
+  <script src="assets/js/profile.js"></script>
   <script>
     $(".dropdown-trigger").dropdown();
 
     $(document).ready(function () {
       $('.sidenav').sidenav();
     });
+
+    var granimInstance = new Granim({
+      element: '#canvas-interactive',
+      name: 'interactive-gradient',
+      elToSetClassOn: '.canvas-interactive-wrapper',
+      direction: 'diagonal',
+      isPausedWhenNotInView: true,
+      stateTransitionSpeed: 500,
+      states: {
+        "default-state": {
+          gradients: [
+            ['#2b4d59', '#39998e'],
+            ['#39998e', '#ffdc7c'],
+            ['#ffdc7c', '#ffaa67'],
+            ['#ffaa67', '#da674a'],
+            ['#da674a', '#2b4d59']
+          ],
+          transitionSpeed: 10000
+        }
+      }
+    });
+  </script>
+  {{!-- This handlebar injection is needed for pages to be visible  --}}
+  {{{body}}}
+</body>
 
           var granimInstance = new Granim({
             element: '#canvas-interactive',

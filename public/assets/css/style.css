@@ -2,6 +2,15 @@ body {
   background-color: #ffdc7c;
 }
 
+p {
+  font-family: 'Alatsi', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Calistoga', cursive;
+  padding: 2rem;
+}
+
 .darkGreen {
   background-color: #2b4d59;
   color: #ffaa67;
@@ -32,4 +41,17 @@ body {
 .carouselImage {
   height:250px;
   width:200px;
+}
+
+.btn {
+  background-color: #39998e;
+  color: #ffdc7c;
+  font-family: 'Alatsi', sans-serif;
+  margin: 15px;
+  line-height: 170%;
+}
+
+.btn-floating.btn-large {
+  width: 10rem;
+  height: 10rem;
 }

@@ -48,6 +48,9 @@ module.exports = function (app) {
 
   // Selected Movie / TV Page:
   // https://wireframe.cc/04NaCb
+  app.get("/selected", function (req, res) {
+    res.render("selected");
+  })
 
   // Homepage post login
   // https://wireframe.cc/i86e0M
