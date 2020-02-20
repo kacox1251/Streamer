@@ -12,9 +12,16 @@ module.exports = function (app) {
   //app.get for bringing in most popular shows for home.html carousel
 
   //app.get for bringing in individual user's to watch for carousel
-  app.get("/profile/api", function(req, res) {
-    Show.findAll().then(function(result) {
-      return res.json(result);
+  app.get("/api/profile/:id", function(req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    db.Show.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.User]
+    }).then(function(result) {
+      res.json(result);
     });
   });
  
