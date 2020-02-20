@@ -22,8 +22,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../../public/assets/img/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/img/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="../../public/assets/img/favicon_io/site.webmanifest">
-
-
 </head>
 
 <body>
@@ -88,27 +86,26 @@
       $('.sidenav').sidenav();
     });
 
-    var granimInstance = new Granim({
-      element: '#canvas-interactive',
-      name: 'interactive-gradient',
-      elToSetClassOn: '.canvas-interactive-wrapper',
-      direction: 'diagonal',
-      isPausedWhenNotInView: true,
-      stateTransitionSpeed: 500,
-      states: {
-        "default-state": {
-          gradients: [
-            ['#2b4d59', '#39998e'],
-            ['#39998e', '#ffdc7c'],
-            ['#ffdc7c', '#ffaa67'],
-            ['#ffaa67', '#da674a'],
-            ['#da674a', '#2b4d59']
-          ],
-          transitionSpeed: 10000
-        }
-      }
-    });
-  </script>
-</body>
-
+          var granimInstance = new Granim({
+            element: '#canvas-interactive',
+            name: 'interactive-gradient',
+            elToSetClassOn: '.canvas-interactive-wrapper',
+            direction: 'diagonal',
+            isPausedWhenNotInView: true,
+            stateTransitionSpeed: 500,
+            states : {
+              "default-state": {
+                gradients: [
+                    ['#2b4d59', '#39998e'],
+                    ['#39998e', '#ffdc7c'],
+                    ['#ffdc7c', '#ffaa67'],
+                    ['#ffaa67', '#da674a'],
+                    ['#da674a', '#2b4d59']
+                ],
+                transitionSpeed: 5000
+              }
+            }
+          });
+        </script>
+    </body>
 </html>
