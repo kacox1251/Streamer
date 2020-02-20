@@ -47,3 +47,7 @@ passport.deserializeUser(function(obj, cb) {
 
 // Exporting our configured passport
 module.exports = passport;
+
+
+// how do we identify the current user that is logged in??? And get their info on the page... api routes???
+

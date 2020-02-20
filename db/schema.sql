@@ -12,13 +12,13 @@ CREATE TABLE user (
 );
 
 CREATE TABLE shows (
-	id INT AUTO_INCREMENT NOT NULL,
+	api_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
     genre VARCHAR (255),
     want_to_watch BOOLEAN,
     watching BOOLEAN,
     completed BOOLEAN,
     user_id INT NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (api_id),
     FOREIGN KEY (user_id) REFERENCES user(id)
 );

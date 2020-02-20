@@ -8,7 +8,7 @@
 
 module.exports = function(sequelize, DataTypes) {
 	var Show = sequelize.define("Show", {
-		id: {
+		api_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			allowNull: false,
