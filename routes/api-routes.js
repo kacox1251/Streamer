@@ -39,9 +39,9 @@ module.exports = function (app) {
   //app.get for bringing in individual user's watchlist for carousel
   app.get("/api/users/:id", function (req, res) {
     db.User.findOne({
-      where: {
-        id: //how are we grabbing this from the currently logged in data?
-      },
+      // where: {
+      //   id: //how are we grabbing this from the currently logged in data?
+      // },
       include: [db.Show]
     }).then((data) => {
       //am I understanding correctly that this would be the information pulled
