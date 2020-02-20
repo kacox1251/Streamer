@@ -13,34 +13,11 @@ module.exports = function (app) {
 
   //app.get for bringing in individual user's to watch for carousel
   app.get("/profile/api", function(req, res) {
-    db.Show.findAll({
-      where: {
-        want_to_watch: true
-      }
-    }).then(function (response) {
-      res.json(response);
+    Show.findAll().then(function(result) {
+      return res.json(result);
     });
   });
-  //app.get for bringing in individual user's have watched for carousel
-  app.get("/profile/api", function(req, res) {
-    db.Show.findAll({
-      where: {
-        completed: true
-      }
-    }).then(function (response) {
-      res.json(response);
-    });
-  });
-  //app.get for bringing in individual user's watching
-  app.get("/profile/api", function(req, res) {
-    db.Show.findAll({
-      where: {
-        watching: true
-      }
-    }).then(function (response) {
-      res.json(response);
-    });
-  });
+ 
 
   // app.post for login
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
