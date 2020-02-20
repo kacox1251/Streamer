@@ -92,7 +92,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
     $(".dropdown-trigger").dropdown();
-  </script>
-</body>
-
+    
+          var granimInstance = new Granim({
+            element: '#canvas-interactive',
+            name: 'interactive-gradient',
+            elToSetClassOn: '.canvas-interactive-wrapper',
+            direction: 'diagonal',
+            isPausedWhenNotInView: true,
+            stateTransitionSpeed: 500,
+            states : {
+                "default-state": {
+                    gradients: [
+                      ['#2b4d59', '#39998e'],
+                      ['#39998e', '#ffdc7c'],
+                      ['#ffdc7c', '#ffaa67'],
+                      ['#ffaa67', '#da674a'],
+                      ['#da674a', '#2b4d59']
+                    ],
+                    transitionSpeed: 5000
+                }
+            }
+          });
+        </script>
+    </body>
 </html>

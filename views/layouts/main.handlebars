@@ -23,11 +23,11 @@
   <link rel="stylesheet" href="assets/css/granim-style.css">
 
   <!-- Favicon -->
+
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="assets/img/favicon_io/site.webmanifest">
-
 
 </head>
 
@@ -119,4 +119,26 @@
   {{{body}}}
 </body>
 
+          var granimInstance = new Granim({
+            element: '#canvas-interactive',
+            name: 'interactive-gradient',
+            elToSetClassOn: '.canvas-interactive-wrapper',
+            direction: 'diagonal',
+            isPausedWhenNotInView: true,
+            stateTransitionSpeed: 500,
+            states : {
+              "default-state": {
+                gradients: [
+                    ['#2b4d59', '#39998e'],
+                    ['#39998e', '#ffdc7c'],
+                    ['#ffdc7c', '#ffaa67'],
+                    ['#ffaa67', '#da674a'],
+                    ['#da674a', '#2b4d59']
+                ],
+                transitionSpeed: 5000
+              }
+            }
+          });
+        </script>
+    </body>
 </html>
