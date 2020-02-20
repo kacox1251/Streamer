@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/granim-style.css">
-        <!-- Favicon -->
-        <!-- <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/Favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/Favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/Favicon/favicon-16x16.png">
-        <link rel="manifest" href="./assets/images/Favicon/site.webmanifest"> -->
+      <!-- Styles -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../css/granim-style.css">
+      <!-- Favicon -->
+      <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon_io/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon_io/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon_io/favicon-16x16.png">
+      <link rel="manifest" href="../img/favicon_io/site.webmanifest">
     </head>
     <body>
         <div>
@@ -47,7 +47,7 @@
           <li><a href="./browseshows.html">Shows</a></li>
         </ul> 
         <ul class="sidenav" id="mobile-demo">
-          <li><a href="sass.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="badges.html">Profile</a></li>
           <li><a href="collapsible.html">Movies</a></li>
           <li><a href="mobile.html">Shows</a></li>
@@ -86,27 +86,14 @@
         </div>
         
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-            $(".dropdown-trigger").dropdown();
-        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.js"></script>
         <script>
-          // var granimInstance = new Granim({
-          //   element: '#granim-canvas',
-          //   direction: 'left-right',
-          //   isPausedWhenNotInView: true,
-          //   states : {
-          //     "default-state": {
-          //       gradients: [
-          //         ['#2b4d59', '#39998e'],
-          //         ['#39998e', '#ffdc7c'],
-          //         ['#ffdc7c', '#ffaa67'],
-          //         ['#ffaa67', '#da674a'],
-          //         ['#da674a', '#2b4d59']
-          //       ]     
-          //     }
-          //   }     
-          // });
+          $(".dropdown-trigger").dropdown();
+
+          $(document).ready(function(){
+            $('.sidenav').sidenav();
+          });
 
           var granimInstance = new Granim({
             element: '#canvas-interactive',
