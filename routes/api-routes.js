@@ -17,9 +17,9 @@ module.exports = function (app) {
       where: {
         want_to_watch: true
       }
-    }).then(function(response) {
-        res.json(response);
-      });
+    }).then(function (response) {
+      res.json(response);
+    });
   });
   //app.get for bringing in individual user's have watched for carousel
   app.get("/profile/api", function(req, res) {
@@ -27,9 +27,9 @@ module.exports = function (app) {
       where: {
         completed: true
       }
-    }).then(function(response) {
-        res.json(response);
-      });
+    }).then(function (response) {
+      res.json(response);
+    });
   });
   //app.get for bringing in individual user's watching
   app.get("/profile/api", function(req, res) {
@@ -37,9 +37,9 @@ module.exports = function (app) {
       where: {
         watching: true
       }
-    }).then(function(response) {
-        res.json(response);
-      });
+    }).then(function (response) {
+      res.json(response);
+    });
   });
 
   // app.post for login
@@ -106,6 +106,27 @@ module.exports = function (app) {
   // app.put for switching a title to completed
 
   // app.delete for removing from list completely
+  
+  // below is what was already in this file before we added all the necessary routes above...
 
+  //app.get for bringing in individual user's watchlist for carousel
+  app.get("/api/users/:id", function (req, res) {
+    db.User.findOne({
+      where: {
+        id: //how are we grabbing this from the currently logged in data?
+      },
+      include: [db.Show]
+    }).then((data) => {
+      //am I understanding correctly that this would be the information pulled
+      // from the database and allow me to pull their movie titles etc?
+      res.json(data);
+    });
+  });
+
+  //app.get for bringing in individual user's have watched for carousel
+
+  //app.get for bringing in individual user's want to watch for carousel
+
+  //app.post for adding new movie or tv show
 
 };

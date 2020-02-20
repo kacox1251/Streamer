@@ -20,8 +20,8 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <!-- Internal styling -->
-  <script src="assets/js/home.js"></script>
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="../js/index.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 <body>
@@ -38,25 +38,8 @@
     <div class="row">
       <div class="darkGreen z-depth-5 col xl9">
         <p> This is where we'll browse movies! </p>
-        <div class="owl-carousel owl-theme">
-          <div class="item">
-            <h4>1</h4>
-          </div>
-          <div class="item">
-            <h4>2</h4>
-          </div>
-          <div class="item">
-            <h4>3</h4>
-          </div>
-          <div class="item">
-            <h4>4</h4>
-          </div>
-          <div class="item">
-            <h4>5</h4>
-          </div>
-          <div class="item">
-            <h4>6</h4>
-          </div>
+        <div class="owl-carousel owl-theme" id="popMovies">
+
         </div>
       </div>
 
@@ -66,25 +49,8 @@
     <div class="row">
       <div class="darkGreen z-depth-5 col xl9">
         <p> This is where we'll browse tv shows! </p>
-        <div class="owl-carousel owl-theme">
-          <div class="item">
-            <h4>1</h4>
-          </div>
-          <div class="item">
-            <h4>2</h4>
-          </div>
-          <div class="item">
-            <h4>3</h4>
-          </div>
-          <div class="item">
-            <h4>4</h4>
-          </div>
-          <div class="item">
-            <h4>5</h4>
-          </div>
-          <div class="item">
-            <h4>6</h4>
-          </div>
+        <div class="owl-carousel owl-theme" id="popTv">
+
         </div>
       </div>
     </div>
@@ -92,25 +58,5 @@
   </div>
 
 </body>
-
-<script>
-  // this code is for the carousel styling  
-  $('.owl-carousel').owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 3
-      },
-      1000: {
-        items: 4
-      }
-    }
-  })
-</script>
 
 </html>

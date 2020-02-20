@@ -4,7 +4,7 @@ module.exports = function (app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route for login or sign up page
+  // route for login or sign up page
   // https://wireframe.cc/yyzyoE
   app.get("/", function(req, res) {
     if (req.user) {
@@ -52,8 +52,8 @@ module.exports = function (app) {
   // Homepage post login
   // https://wireframe.cc/i86e0M
   // Need to set up validation in order for them to view this page
-  app.get("/home", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
+  app.get("/", function (req, res) {
+    res.render("index");
   });
 
 };
