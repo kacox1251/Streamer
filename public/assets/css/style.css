@@ -25,3 +25,7 @@ body {
   width:100%;
 }
 
+#streamer-logo {
+  position: relative;
+  width: 200px;
+}
