@@ -10,7 +10,7 @@ module.exports = function (app) {
     if (req.user) {
       res.redirect("/profile");
     }
-    res.sendFile(path.join(__dirname, "../public/index.html"));
+    res.sendFile(path.join(__dirname, "../public/assets/index.html"));
   });
 
   // personal profile page route

@@ -72,16 +72,16 @@ module.exports = function (app) {
   // app.get info from movie db for specific title info
 
   // app.post for search (the example that lindsay showed)
-  app.post("/api/search/:title", {title: req.body.title}, function(req, res) {
-    axios.get("https://api.themoviedb.org/3/search/multi?api_key=" + process.env.API_KEY + "&language=en-US&query=" + title + "&page=1&include_adult=false").then(function(data) {
-      const titleObj = {
-        title: data.title
-      }
-      res.json(titleObj);
-    }).catch(function(e) {
-      res.json(e);
-    })
-  });
+  // app.post("/api/search/:title", {title: req.body.title}, function(req, res) {
+  //   axios.get("https://api.themoviedb.org/3/search/multi?api_key=" + process.env.API_KEY + "&language=en-US&query=" + title + "&page=1&include_adult=false").then(function(data) {
+  //     const titleObj = {
+  //       title: data.title
+  //     }
+  //     res.json(titleObj);
+  //   }).catch(function(e) {
+  //     res.json(e);
+  //   })
+  // });
 
   // app.post for watchlist, needs booleans passed into it inside the post for want to watch true watching false completed false etc.
 
