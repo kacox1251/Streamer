@@ -8,9 +8,9 @@ module.exports = function (app) {
   // https://wireframe.cc/yyzyoE
   app.get("/", function (req, res) {
     if (req.user) {
-      res.redirect("/profile");
+      res.render("profile");
     }
-    res.sendFile(path.join(__dirname, "../public/index.html"));
+    res.render("index");
   });
 
   // personal profile page route
@@ -18,33 +18,28 @@ module.exports = function (app) {
   // Need to set up validation in order for them to view this page
   app.get("/profile", function (req, res) {
     if (req.user) {
-      res.redirect("/profile");
+      res.render("profile");
     }
-    res.sendFile(path.join(__dirname, "../public/profile.html"));
   });
 
   app.get("browse-movies", function (req, res) {
-    // do the api call
-    // setup your img srcs
-    // send to handlebars as an array
-    // setting ids and such is in handlebars
-    res.sendFile(path.join(__dirname, "../public/browsemovies.html"));
+    res.render("browsemovies");
   })
 
   app.get("browse-shows", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/browseshows.html"));
+    res.render("browseshows");
   })
 
   app.get("/:title", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/selected.html"));
+    res.render("selected");
   })
 
   app.get("/signup", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.render("signup");
   })
 
   app.get("/login", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.render("login");
   })
 
   // Browse Pages:
@@ -59,8 +54,8 @@ module.exports = function (app) {
   // Homepage post login
   // https://wireframe.cc/i86e0M
   // Need to set up validation in order for them to view this page
-  app.get("/", function (req, res) {
-    res.render("index");
-  });
+  // app.get("/", function (req, res) {
+  //   res.render("index");
+  // });
 
 };
