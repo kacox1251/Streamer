@@ -41,8 +41,8 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger" style="color: black;"><i
             class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="./index.html" style="color: black;">Home</a></li>
-          <li><a href="./profile.html" style="color: black;">Profile</a></li>
+          <li><a href="./index" style="color: black;">Home</a></li>
+          <li><a href="./profile" style="color: black;">Profile</a></li>
           <li><a class="dropdown-trigger" data-target="dropdown1" style="color: black;">Browse<i
                 class="material-icons right">arrow_drop_down</i></a></li>
           <li>
@@ -56,16 +56,16 @@
               </div>
             </form>
           </li>
-          <li><a href="./signup.html" style="color: black;">Sign-Up</a></li>
-          <li><a href="./login.html" style="color: black;">Log-In</a></li>
+          <li><a href="./signup" style="color: black;">Sign-Up</a></li>
+          <li><a href="./login" style="color: black;">Log-In</a></li>
         </ul>
       </div>
     </nav>
   </div>
   <ul id="dropdown1" class="dropdown-content">
-    <li><a href="./browsemovies.html">Movies</a></li>
+    <li><a href="./browsemovies">Movies</a></li>
     <li class="divider"></li>
-    <li><a href="./browseshows.html">Shows</a></li>
+    <li><a href="./browseshows">Shows</a></li>
   </ul>
   <ul class="sidenav" id="mobile-demo">
     <li><a href="/">Home</a></li>
@@ -119,26 +119,27 @@
   {{{body}}}
 </body>
 
-          var granimInstance = new Granim({
-            element: '#canvas-interactive',
-            name: 'interactive-gradient',
-            elToSetClassOn: '.canvas-interactive-wrapper',
-            direction: 'diagonal',
-            isPausedWhenNotInView: true,
-            stateTransitionSpeed: 500,
-            states : {
-              "default-state": {
-                gradients: [
-                    ['#2b4d59', '#39998e'],
-                    ['#39998e', '#ffdc7c'],
-                    ['#ffdc7c', '#ffaa67'],
-                    ['#ffaa67', '#da674a'],
-                    ['#da674a', '#2b4d59']
-                ],
-                transitionSpeed: 5000
-              }
-            }
-          });
-        </script>
-    </body>
+{{!-- var granimInstance = new Granim({
+element: '#canvas-interactive',
+name: 'interactive-gradient',
+elToSetClassOn: '.canvas-interactive-wrapper',
+direction: 'diagonal',
+isPausedWhenNotInView: true,
+stateTransitionSpeed: 500,
+states : {
+"default-state": {
+gradients: [
+['#2b4d59', '#39998e'],
+['#39998e', '#ffdc7c'],
+['#ffdc7c', '#ffaa67'],
+['#ffaa67', '#da674a'],
+['#da674a', '#2b4d59']
+],
+transitionSpeed: 5000
+}
+}
+}); --}}
+</script>
+</body>
+
 </html>

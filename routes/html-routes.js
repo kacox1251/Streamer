@@ -30,7 +30,7 @@ module.exports = function (app) {
     res.render("browseshows");
   })
 
-  app.get("/:title", function (req, res) {
+  app.get("/search/:title", function (req, res) {
     res.render("selected");
   })
 
