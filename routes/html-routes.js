@@ -7,9 +7,6 @@ module.exports = function (app) {
   // route for login or sign up page
   // https://wireframe.cc/yyzyoE
   app.get("/", function(req, res) {
-    if (req.user) {
-      res.render("profile");
-    }
     res.render("index");
   });
 
@@ -20,13 +17,14 @@ module.exports = function (app) {
     if (req.user) {
       res.render("profile");
     }
+    res.render("index");
   });
 
-  app.get("browse-movies", function(req, res) {
+  app.get("/browse-movies", function(req, res) {
     res.render("browsemovies");
   })
   
-  app.get("browse-shows", function(req, res) {
+  app.get("/browse-shows", function(req, res) {
     res.render("browseshows");
   })
   
