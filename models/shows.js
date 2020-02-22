@@ -10,7 +10,6 @@ module.exports = function(sequelize, DataTypes) {
 	var Show = sequelize.define("Show", {
 		api_id: {
 			type: DataTypes.INTEGER,
-			autoIncrement: true,
 			allowNull: false,
 			primaryKey: true
 		},
