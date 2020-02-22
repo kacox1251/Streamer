@@ -55,3 +55,7 @@ h1, h2, h3, h4, h5 {
   width: 10rem;
   height: 10rem;
 }
+
+/* button:focus {
+  background-color: #da674a;
+} */

@@ -6,7 +6,7 @@ module.exports = function (app) {
 
   // route for login or sign up page
   // https://wireframe.cc/yyzyoE
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     if (req.user) {
       res.redirect("/profile");
     }
@@ -16,30 +16,34 @@ module.exports = function (app) {
   // personal profile page route
   // https://wireframe.cc/REhi6u
   // Need to set up validation in order for them to view this page
-  app.get("/profile", function(req, res) {
+  app.get("/profile", function (req, res) {
     if (req.user) {
       res.redirect("/profile");
     }
     res.sendFile(path.join(__dirname, "../public/profile.html"));
   });
 
-  app.get("browse-movies", function(req, res) {
+  app.get("browse-movies", function (req, res) {
+    // do the api call
+    // setup your img srcs
+    // send to handlebars as an array
+    // setting ids and such is in handlebars
     res.sendFile(path.join(__dirname, "../public/browsemovies.html"));
   })
-  
-  app.get("browse-shows", function(req, res) {
+
+  app.get("browse-shows", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/browseshows.html"));
   })
-  
-  app.get("/:title", function(req, res) {
+
+  app.get("/:title", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/selected.html"));
   })
-  
-  app.get("/signup", function(req, res) {
+
+  app.get("/signup", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   })
-  
-  app.get("/login", function(req, res) {
+
+  app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   })
 

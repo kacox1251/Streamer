@@ -12,41 +12,41 @@ module.exports = function (app) {
   //app.get for bringing in most popular shows for home.html carousel
 
   //app.get for bringing in individual user's to watch for carousel
-  app.get("/profile/api", function(req, res) {
-    Show.findAll().then(function(result) {
+  app.get("/profile/api", function (req, res) {
+    Show.findAll().then(function (result) {
       return res.json(result);
     });
   });
- 
+
 
   // app.post for login
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
   });
 
   // app.post for signup
-  app.post("/api/signup", function(req, res) {
+  app.post("/api/signup", function (req, res) {
     db.User.create({
       email: req.body.email,
       password: req.body.password
     })
-    .then(function() {
-      res.redirect(307, "/api/login");
-    })
-    .catch(function(err) {
-      res.status(401).json(err);
-    })
+      .then(function () {
+        res.redirect(307, "/api/login");
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+      })
   });
 
   // app.get for logout
-  app.get("/logout", function(req, res) {
+  app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
   });
 
   // app.get for user_data (DO WE NEED THIS ONE?)
-  app.get("/api/user_data", function(req, res) {
-    if(!req.user) {
+  app.get("/api/user_data", function (req, res) {
+    if (!req.user) {
       res.json({});
     } else {
       res.json({
@@ -65,13 +65,13 @@ module.exports = function (app) {
   // app.get info from movie db for specific title info
 
   // app.post for search (the example that lindsay showed)
-  app.post("/api/search/:title", {title: req.body.title}, function(req, res) {
-    axios.get("https://api.themoviedb.org/3/search/multi?api_key=" + process.env.API_KEY + "&language=en-US&query=" + title + "&page=1&include_adult=false").then(function(data) {
+  app.post("/api/search/:title", { title: req.body.title }, function (req, res) {
+    axios.get("https://api.themoviedb.org/3/search/multi?api_key=" + process.env.API_KEY + "&language=en-US&query=" + title + "&page=1&include_adult=false").then(function (data) {
       const titleObj = {
         title: data.title
       }
       res.json(titleObj);
-    }).catch(function(e) {
+    }).catch(function (e) {
       res.json(e);
     })
   });
@@ -83,7 +83,7 @@ module.exports = function (app) {
   // app.put for switching a title to completed
 
   // app.delete for removing from list completely
-  
+
   // below is what was already in this file before we added all the necessary routes above...
 
   //app.get for bringing in individual user's watchlist for carousel

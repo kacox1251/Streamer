@@ -1,9 +1,18 @@
 
 $(document).ready(function () {
 
+  // //get for carousel information
+  // $.get("api/shows/:id", {send over currently logged in user}, function() {
+
+  // }). 
+
+  // }
+
+
   // this code generates a chart on the screen. we can add an additional
   // data set of some other information on to the same
   // radar later down the road if we would like to
+
   var ctx = document.getElementById("activity-chart").getContext("2d");
   var myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -35,13 +44,5 @@ $(document).ready(function () {
     }
   });
 
-  let userId = //how are we grabbing this from the currently logged in data?
-
-  const getUserData = (userId) => {
-    //  
-    $.get("/api/authors/{userId}", someFunctionToPrintItOutOrWhatever);
-  };
-
-  getUserData();
 
 });
