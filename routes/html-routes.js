@@ -1,4 +1,5 @@
-var path = require("path");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 
 module.exports = function (app) {
 
@@ -13,7 +14,7 @@ module.exports = function (app) {
   // personal profile page route
   // https://wireframe.cc/REhi6u
   // Need to set up validation in order for them to view this page
-  app.get("/profile", function(req, res) {
+  app.get("/profile", isAuthenticated, function(req, res) {
     if (req.user) {
       res.render("profile");
     }
@@ -37,6 +38,9 @@ module.exports = function (app) {
   })
   
   app.get("/login", function(req, res) {
+    if (req.user) {
+      res.redirect("profile");
+    }
     res.render("login");
   })
 
