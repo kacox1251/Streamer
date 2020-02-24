@@ -5,8 +5,8 @@ module.exports = function (app) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // route for login or sign up page
-
-  app.get("/", function (req, res) {
+ 
+  app.get("/", isAuthenticated, function (req, res) {
     if (req.user) {
       res.render("profile")
     }
@@ -34,11 +34,14 @@ module.exports = function (app) {
     res.render("selected")
   })
 
-  app.get("/signup", function (req, res) {
-    res.render("signup")
+  app.get("/signup", isAuthenticated, function (req, res) {
+    if (req.user) {
+      res.render("profile");
+    }
+    res.render("signup");
   })
-
-  app.get("/login", function (req, res) {
+  
+  app.get("/login", isAuthenticated, function(req, res) {
     if (req.user) {
       res.redirect("profile")
     }
