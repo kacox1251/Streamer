@@ -32,7 +32,7 @@ module.exports = function (app) {
         res.json(e)
       })
   })
-// app.get info from movie db for specific title info
+  // app.get info from movie db for specific title info
   app.get("/api/search/:title", function (req, res) {
     const title = req.body.title
     const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`
@@ -62,17 +62,17 @@ module.exports = function (app) {
   //   //////////////////////////////////////////////////////////////////////////////////////////////
 
   // app.get for getting all movie information related to a user
-  app.get("/api/profile/:id", function (req, res) {
-    db.Show.findAll({
-      where: {
-        user_id: req.params.id
-      }
-    }).then(function (//) {
-		// using api_id call to api for poster image, create an array of links for front end to drill into
-	}).then(function (result) {
-		res.json(result, //posterArray)
-	})
-  
+  // app.get("/api/profile/:id", function (req, res) {
+  //   db.Show.findAll({
+  //     where: {
+  //       user_id: req.params.id
+  //     }
+  //   }).then(function (//) {
+  // 	// using api_id call to api for poster image, create an array of links for front end to drill into
+  // }).then(function (result) {
+  // 	res.json(result, //posterArray)
+  // })
+
 
   // route for adding movies and shows to our database
   app.get("/api/selected/:id", function (req, res) {
