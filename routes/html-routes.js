@@ -7,7 +7,7 @@ module.exports = function (app) {
 
   // route for login or sign up page
   // https://wireframe.cc/yyzyoE
-  app.get("/", function (req, res) {
+  app.get("/", isAuthenticated, function (req, res) {
     if (req.user) {
       res.render("profile");
     }
@@ -36,11 +36,14 @@ module.exports = function (app) {
     res.render("selected");
   })
 
-  app.get("/signup", function (req, res) {
+  app.get("/signup", isAuthenticated, function (req, res) {
+    if (req.user) {
+      res.render("profile");
+    }
     res.render("signup");
   })
   
-  app.get("/login", function(req, res) {
+  app.get("/login", isAuthenticated, function(req, res) {
     if (req.user) {
       res.redirect("profile");
     }
