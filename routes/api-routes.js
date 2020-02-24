@@ -4,7 +4,7 @@ require("dotenv").config()
 const axios = require("axios")
 
   // module.export function for exporting routes to server.js file
-module.export = function(app) {
+module.exports = function (app) {
   // THESE ROUTES AE FOR THE MOVIE/TV API///////////////////////////////////
   // app.get for bringing in most popular movies for index.html carousel
   app.get("/", function (req, res) {
