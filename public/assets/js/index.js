@@ -1,9 +1,10 @@
+console.log("Index js here");
 
 $(document).ready(function () {
 
   const popularMovies = () => {
-    $.get("/api/search/...", { //what's the call? 
-
+    $.get("/index", function (data) {
+      console.log("pop movie " + data);
     }).then(function (data) {
 
       console.log(data);
@@ -29,8 +30,8 @@ $(document).ready(function () {
   };
 
   const popularTv = () => {
-    $.get("/api/search/...", { //what's the call
-
+    $.get("/index", function (data) {
+      console.log("pop tv " + data);
     }).then(function (data) {
 
       //div with class, image with info, append image to div, append div to parent
@@ -52,26 +53,27 @@ $(document).ready(function () {
 
         $(newDiv).appendTo($("#popTv"));
       };
-    }).then(() => {
-      $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        responsive: {
-          0: {
-            items: 1
-          },
-          600: {
-            items: 3
-          },
-          1000: {
-            items: 4
-          }
-        }
-      });
+      // }).then(() => {
+      //   $('.owl-carousel').owlCarousel({
+      //     loop: true,
+      //     margin: 10,
+      //     nav: true,
+      //     responsive: {
+      //       0: {
+      //         items: 1
+      //       },
+      //       600: {
+      //         items: 3
+      //       },
+      //       1000: {
+      //         items: 4
+      //       }
+      //     }
+      //   });
     });
+  };
 
-    popularMovies();
-    popularTv();
+  popularMovies();
+  popularTv();
 
-  });
+});

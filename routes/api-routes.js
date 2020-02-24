@@ -7,12 +7,12 @@ const axios = require("axios");
 
 module.exports = function (app) {
 	//app.get for bringing in most popular movies for index.html carousel
-	app.get("/", function(req, res) {
-		const queryURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=
-    ${process.env.API_KEY}&language=en-US&page=1&region=US`;
+	app.get("/index", function (req, res) {
+		const queryURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1&region=US`;
 		axios
 			.get(queryURL)
-			.then(function(data) {
+			.then(function (data) {
+				console.log("top rates movies" + data);
 				res.json(data);
 			})
 			.catch(function (e) {
@@ -21,11 +21,12 @@ module.exports = function (app) {
 	});
 
 	//app.get for bringing in most popular shows for index.html carousel
-	app.get("/", function(req, res) {
+	app.get("/index", function (req, res) {
 		const queryURL = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.API_KEY}&language=en-US&page=1`;
 		axios
 			.get(queryURL)
-			.then(function(data) {
+			.then(function (data) {
+				console.log("on air tv" + data);
 				res.json(data);
 			})
 			.catch(function (e) {
@@ -96,12 +97,12 @@ module.exports = function (app) {
 
 	// app.get info from movie db for specific title info
 	// DOES THIS NEED A SEARCH BEFORE THE WILDCARD IN THE ROUTE OR CAN WE CUT THAT OUT OF THE ROUTE
-	app.get("/api/search/:title", function(req, res) {
+	app.get("/api/search/:title", function (req, res) {
 		const title = req.body.title;
 		const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`;
 		axios
 			.get(queryURL)
-			.then(function(data) {
+			.then(function (data) {
 				res.json(data);
 			})
 			.catch(function (e) {
@@ -110,12 +111,12 @@ module.exports = function (app) {
 	});
 
 	// app.post for search (the example that lindsay showed)
-	app.post("/api/search", function(req, res) {
+	app.post("/api/search", function (req, res) {
 		const title = req.body.title;
 		const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`;
 		axios
 			.get(queryURL)
-			.then(function(data) {
+			.then(function (data) {
 				res.json(data);
 			})
 			.catch(function (e) {
@@ -125,60 +126,60 @@ module.exports = function (app) {
 
 	// create show function
 	function createShow(movie) {
-		app.post("/api/selected", function(req, res) {
+		app.post("/api/selected", function (req, res) {
 			db.Show.create({
-			  api_id: req.body.api_id,
-			  title: req.body.title,
-			  genre: req.body.genre,
-			  want_to_watch: true,
-			  watching: false,
-			  completed: false
-		
-			}).then(function(results) {
-			  res.end();
+				api_id: req.body.api_id,
+				title: req.body.title,
+				genre: req.body.genre,
+				want_to_watch: true,
+				watching: false,
+				completed: false
+
+			}).then(function (results) {
+				res.end();
 			})
 		})
 	}
 	// update show function
 	function updateShow(movie) {
-		app.put("/api/profile/watching/:id", function(req, res) {
-			db.Show.update (
-			 {want_to_watch: false},
-			 {watching: true},
-			 {where: req.params.id}
-			).then(function(response) {
-			  res.json(response)
+		app.put("/api/profile/watching/:id", function (req, res) {
+			db.Show.update(
+				{ want_to_watch: false },
+				{ watching: true },
+				{ where: req.params.id }
+			).then(function (response) {
+				res.json(response)
 			})
-		  })
+		})
 	}
 
-  // get absolutely needs url param, but a url param 
-	app.get("/api/selected/:id", function(req, res) {
-    let show = {
-      user_id: req.params.id,
-      api_id: api_id,
-      title: title,
-      genre: genre,
-      want_to_watch: want_to_watch,
-      watching: watching,
-      complete: complete
-    };
-    db.Show.findAll({
-      where: {
-        user_id: req.params.id,
-        api_id: api_id
-      }
-    }).then(function(data) {
-      console.log(data);
-      if(!data) {
-        db.Show.create(show)
-      } else {
-        db.Show.udpate(show)
-      }
-    }).then(function() {
-      res.redirect("/profile");
-    })
-  });
+	// get absolutely needs url param, but a url param 
+	app.get("/api/selected/:id", function (req, res) {
+		let show = {
+			user_id: req.params.id,
+			api_id: api_id,
+			title: title,
+			genre: genre,
+			want_to_watch: want_to_watch,
+			watching: watching,
+			complete: complete
+		};
+		db.Show.findAll({
+			where: {
+				user_id: req.params.id,
+				api_id: api_id
+			}
+		}).then(function (data) {
+			console.log(data);
+			if (!data) {
+				db.Show.create(show)
+			} else {
+				db.Show.udpate(show)
+			}
+		}).then(function () {
+			res.redirect("/profile");
+		})
+	});
 
 	// app.put for switching a title to watching
 
@@ -201,3 +202,19 @@ module.exports = function (app) {
 	});
 
 };
+
+
+//delete show from all watch lists
+app.delete("/api/selected/:id", function (req, res) {
+	db.Show.destroy({
+		where: {
+			// foreignKey: //user id
+			// api_id: //show's data-movie info
+		}
+	})
+		// is this set up properly?
+		.then(function () {
+			// I think this can just be an end
+			res.end();
+		});
+});
