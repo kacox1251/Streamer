@@ -1,39 +1,37 @@
-var isAuthenticated = require("../config/middleware/isAuthenticated");
-
+/* eslint-disable quotes */
+var isAuthenticated = require("../config/middleware/isAuthenticated")
 
 module.exports = function (app) {
-
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // route for login or sign up page
-  // https://wireframe.cc/yyzyoE
+ 
   app.get("/", isAuthenticated, function (req, res) {
     if (req.user) {
-      res.render("profile");
+      res.render("profile")
     }
-    res.render("index");
-  });
+    res.render("index")
+  })
 
   // personal profile page route
-  // https://wireframe.cc/REhi6u
-  // Need to set up validation in order for them to view this page
-  app.get("/profile", isAuthenticated, function(req, res) {
-    if (req.user) {
-      res.render("profile");
-    }
-    res.render("index");
-  });
 
-  app.get("/browse-movies", function(req, res) {
-    res.render("browsemovies");
+  app.get("/profile", isAuthenticated, function (req, res) {
+    if (req.user) {
+      res.render("profile")
+    }
+    res.render("index")
   })
-  
-  app.get("/browse-shows", function(req, res) {
-    res.render("browseshows");
+
+  app.get("/browse-movies", function (req, res) {
+    res.render("browsemovies")
+  })
+
+  app.get("/browse-shows", function (req, res) {
+    res.render("browseshows")
   })
 
   app.get("/search/:title", function (req, res) {
-    res.render("selected");
+    res.render("selected")
   })
 
   app.get("/signup", isAuthenticated, function (req, res) {
@@ -45,25 +43,14 @@ module.exports = function (app) {
   
   app.get("/login", isAuthenticated, function(req, res) {
     if (req.user) {
-      res.redirect("profile");
+      res.redirect("profile")
     }
-    res.render("login");
+    res.render("login")
   })
-
-  // Browse Pages:
-  // https://wireframe.cc/5hNno4
 
   // Selected Movie / TV Page:
-  // https://wireframe.cc/04NaCb
+
   app.get("/selected", function (req, res) {
-    res.render("selected");
+    res.render("selected")
   })
-
-  // Homepage post login
-  // https://wireframe.cc/i86e0M
-  // Need to set up validation in order for them to view this page
-  // app.get("/", function (req, res) {
-  //   res.render("index");
-  // });
-
-};
+}
