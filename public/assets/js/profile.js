@@ -1,10 +1,13 @@
 
 $(document).ready(function () {
 
-  // //get for carousel information
-  // $.get("api/shows/:id", {send over currently logged in user}, function() {
+  //get for carousel information
+  function getCarousel() {
+    $.get("api/profile/:id", function (result) {
+      console.log(result);
+    })
+  }
 
-  // }). 
 
   // }
 
@@ -44,5 +47,6 @@ $(document).ready(function () {
   //   }
   // });
 
+  getCarousel();
 
 });
