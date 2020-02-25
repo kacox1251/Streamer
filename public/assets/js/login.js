@@ -5,7 +5,7 @@ $(document).ready(function () {
   var passwordInput = $("#login-pwd");
 
   // When the form is submitted, we validate there's an email and password entered
-  loginForm.on("submit", function (event) {
+  $("#loginForm").on("submit", function (event) {
     event.preventDefault();
     console.log("Here");
     var userData = {
@@ -29,8 +29,9 @@ $(document).ready(function () {
       email: email,
       password: password
     })
-      .then(function () {
-        window.location.replace("/profile");
+      .then(function (data) {
+        console.log("Did we did it?", data)
+        window.location = (`/profile/${data.id}`); //like this?
         // If there's an error, log the error
       })
       .catch(function (err) {
