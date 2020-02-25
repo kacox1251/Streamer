@@ -3,12 +3,6 @@ var bcrypt = require("bcryptjs");
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
 	var User = sequelize.define("User", {
-		id: {
-			type: DataTypes.INTEGER,
-			autoIncrement: true,
-			allowNull: false,
-			primaryKey: true
-		},
 		// The email cannot be null, and must be a proper email before creation
 		email: {
 			type: DataTypes.STRING,
@@ -23,7 +17,9 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false
 		}
-    });
+    }, {
+		freezeTableName: true
+	});
     
     User.associate = function(models) {
         // Associating Author with Posts

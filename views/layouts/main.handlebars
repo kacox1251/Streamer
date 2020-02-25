@@ -16,18 +16,24 @@
   {{!-- Fonts --}}
   <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Calistoga&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
 
   <!-- Internal styling -->
   {{!-- changed routes to stylesheet, they were not loading as was. Public has been declared for access. --}}
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/granim-style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/granim-style.css">
+  <script src="/assets/js/profile.js"></script>
+  <script src="/assets/js/signup.js"></script>
+  <script src="/assets/js/index.js"></script>
+  <script src="/assets/js/login.js"></script>
+  <script src="/assets/js/selected.js"></script>
 
   <!-- Favicon -->
-
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="assets/img/favicon_io/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/assets/img/favicon_io/site.webmanifest">
 
 </head>
 
@@ -37,12 +43,12 @@
       <canvas id="canvas-interactive"></canvas>
       <div class="nav-wrapper cta-wrapper">
         <a href="#!" class="brand-logo" style="color: black;"><img id="streamer-logo"
-            src="assets/img/streamer-logo.png"></a>
+            src="/assets/img/streamer-logo.png"></a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger" style="color: black;"><i
             class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="./index.html" style="color: black;">Home</a></li>
-          <li><a href="./profile.html" style="color: black;">Profile</a></li>
+          <li><a href="./" style="color: black;">Home</a></li>
+          <li><a href="./profile" style="color: black;">Profile</a></li>
           <li><a class="dropdown-trigger" data-target="dropdown1" style="color: black;">Browse<i
                 class="material-icons right">arrow_drop_down</i></a></li>
           <li>
@@ -56,16 +62,16 @@
               </div>
             </form>
           </li>
-          <li><a href="./signup.html" style="color: black;">Sign-Up</a></li>
-          <li><a href="./login.html" style="color: black;">Log-In</a></li>
+          <li><a href="./signup" style="color: black;">Sign-Up</a></li>
+          <li><a href="./login" style="color: black;">Log-In</a></li>
         </ul>
       </div>
     </nav>
   </div>
   <ul id="dropdown1" class="dropdown-content">
-    <li><a href="./browsemovies.html">Movies</a></li>
+    <li><a href="./browsemovies">Movies</a></li>
     <li class="divider"></li>
-    <li><a href="./browseshows.html">Shows</a></li>
+    <li><a href="./browseshows">Shows</a></li>
   </ul>
   <ul class="sidenav" id="mobile-demo">
     <li><a href="/">Home</a></li>
@@ -77,16 +83,17 @@
     <li><a href="mobile.html">Log-In</a></li>
   </ul>
 
+  {{{body}}}
+
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.js"></script>
   {{!-- This needs to be called last so it can override other options --}}
-  <script src="assets/js/profile.js"></script>
+
+
   <script>
     $(".dropdown-trigger").dropdown();
 
@@ -115,7 +122,6 @@
       }
     });
   </script>
-  {{!-- This handlebar injection is needed for pages to be visible  --}}
-  {{{body}}}
+
 </body>
 </html>

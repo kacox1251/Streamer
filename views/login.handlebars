@@ -1,22 +1,22 @@
-<div id="login-container">
+<div class="container">
     <h1>Log In</h1>
     <div>
         <div class="row">
-            <form class="col s12 login">
-                <div class="row" id="#loginemail">
+            <form class="col m8 s12" id="loginForm">
+                <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="email" class="validate">
                         <label for="email">Email</label>
+                        <input type="email" class="validate" id="login-email">
                     </div>
                 </div>
-                <div class="row" id="loginpassword">
+                <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
                         <label for="password">Password</label>
+                        <input type="password" class="validate" id="login-pwd">
                     </div>
                 </div>
-                <a class="waves-effect waves-light btn" id="login-btn">Log In</a>
+                <button type="submit" class="waves-effect waves-light btn" id="login-btn">Log In</button>
             </form>
-        </div>            
+        </div>
     </div>
 </div>

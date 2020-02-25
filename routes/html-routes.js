@@ -1,61 +1,54 @@
-var path = require("path");
+/* eslint-disable quotes */
+var isAuthenticated = require("../config/middleware/isAuthenticated")
+const db = require("../models")
+
+
 
 module.exports = function (app) {
-
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // route for login or sign up page
-  // https://wireframe.cc/yyzyoE
-  app.get("/", function(req, res) {
+  // isAuthenticated
+  app.get("/", function (req, res) {
+    // if (req.user) {
+    //   console.log("if logged in go to profile")
+    //   res.render("profile")
+    // }
+    // console.log("if not logged in go to index")
+    res.render("index")
+  })
+
+
+
+  // isAuthenticated, ADD ID HERE
+  app.get("/profile/:id", isAuthenticated, function (req, res) {
     if (req.user) {
+      // console.log("res.id", res.id);
       res.render("profile");
-    }
-    res.render("index");
-  });
-
-  // personal profile page route
-  // https://wireframe.cc/REhi6u
-  // Need to set up validation in order for them to view this page
-  app.get("/profile", function(req, res) {
-    if (req.user) {
-      res.render("profile");
+    } else {
+      res.render("index");
     }
   });
-
-  app.get("browse-movies", function(req, res) {
-    res.render("browsemovies");
-  })
-  
-  app.get("browse-shows", function(req, res) {
-    res.render("browseshows");
-  })
-  
-  app.get("/:title", function(req, res) {
-    res.render("selected");
-  })
-  
-  app.get("/signup", function(req, res) {
-    res.render("signup");
-  })
-  
-  app.get("/login", function(req, res) {
-    res.render("login");
-  })
-
-  // Browse Pages:
-  // https://wireframe.cc/5hNno4
 
   // Selected Movie / TV Page:
-  // https://wireframe.cc/04NaCb
-  app.get("/selected", function (req, res) {
-    res.render("selected");
+  // on click for search redirects to selected with movie title
+  app.get("/selected/:title", function (req, res) {
+    res.render("selected")
   })
 
-  // Homepage post login
-  // https://wireframe.cc/i86e0M
-  // Need to set up validation in order for them to view this page
-  // app.get("/", function (req, res) {
-  //   res.render("index");
-  // });
+  // isAuthenticated,
+  app.get("/signup", function (req, res) {
+    // if (req.user) {
+    //   res.render("profile");
+    // }
+    res.render("signup");
+  })
+  // isAuthenticated,
+  app.get("/login", function (req, res) {
+    // if (req.user) {
+    //   res.redirect("profile")
+    // }
+    res.render("login")
+  })
 
-};
+}
