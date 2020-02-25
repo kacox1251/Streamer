@@ -30,6 +30,8 @@ module.exports = function(sequelize, DataTypes) {
 		completed: {
 			type: DataTypes.BOOLEAN
 		}
+	}, {
+		freezeTableName: true
 	});
 
 	Show.associate = function(models) {
