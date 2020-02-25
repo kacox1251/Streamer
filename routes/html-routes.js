@@ -19,14 +19,16 @@ module.exports = function (app) {
   })
 
 
+
   // isAuthenticated, ADD ID HERE
   app.get("/profile/:id", isAuthenticated, function (req, res) {
     if (req.user) {
       // console.log("res.id", res.id);
       res.render("profile");
+    } else {
+      res.render("index");
     }
-    res.render("index")
-  })
+  });
 
   app.get("/browse-movies", function (req, res) {
     res.render("browsemovies")
