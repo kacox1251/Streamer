@@ -36,6 +36,15 @@ module.exports = function (app) {
     res.render("selected")
   })
 
+  //Browse pages, only display coming soon
+  app.get("/browsemovies", function(req, res) {
+    res.render("browsemovies");
+  })
+  
+  app.get("/browseshows", function(req, res) {
+    res.render("browseshows");
+  })
+
   // isAuthenticated,
   app.get("/signup", function (req, res) {
     // if (req.user) {
