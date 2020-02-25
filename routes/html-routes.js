@@ -30,17 +30,12 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/browse-movies", function (req, res) {
-    res.render("browsemovies")
-  })
-
-  app.get("/browse-shows", function (req, res) {
-    res.render("browseshows")
-  })
-
-  app.get("/search/:title", function (req, res) {
+  // Selected Movie / TV Page:
+  // on click for search redirects to selected with movie title
+  app.get("/selected/:title", function (req, res) {
     res.render("selected")
   })
+
   // isAuthenticated,
   app.get("/signup", function (req, res) {
     // if (req.user) {
@@ -56,9 +51,4 @@ module.exports = function (app) {
     res.render("login")
   })
 
-  // Selected Movie / TV Page:
-
-  app.get("/selected", function (req, res) {
-    res.render("selected")
-  })
 }
