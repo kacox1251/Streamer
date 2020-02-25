@@ -6,7 +6,7 @@
 // watching default false
 // foreign key pointing to user id, pointing to user id will come in with the route files with the where and includes stuff
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
 	var Show = sequelize.define("Show", {
 		api_id: {
 			type: DataTypes.INTEGER,
@@ -16,10 +16,6 @@ module.exports = function(sequelize, DataTypes) {
 		title: {
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-		genre: {
-			type: DataTypes.STRING,
-			allowNull: true
 		},
 		want_to_watch: {
 			type: DataTypes.BOOLEAN
@@ -34,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
 		freezeTableName: true
 	});
 
-	Show.associate = function(models) {
+	Show.associate = function (models) {
 		Show.belongsTo(models.User, {
 			foreignKey: {
 				allowNull: false
