@@ -1,14 +1,36 @@
 
 $(document).ready(function () {
 
-  // //get for carousel information
+  //get for carousel information
   // function getCarousel() {
-  //   $.get("api/profile/:id", function (result) {
+  //   $.get("/api/profile/:id", function (result) {
   //     console.log(result);
   //   })
   // }
 
-  //
+  // sort them into there "true" data ids
+  // count each set to send over to the data on the chart
+  // append appropriately 
+
+  //       for (var i = 0; i < 20; i++) {
+
+  //         var newDiv = $("<div>");
+  //         newDiv.addClass("item");
+
+  //         var bkgImg = data.results[i].poster_path;
+
+  //         var img = $("<img>");
+  //         var imgSrc = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + bkgImg;
+
+  //         img.attr("src", imgSrc);
+  //         img.addClass("carouselImage");
+  //         newDiv.append(img);
+
+  //         $("#popMovies").append(newDiv);
+  //       };
+  //     });
+  //   };
+
 
   // }
 

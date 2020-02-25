@@ -1,20 +1,25 @@
 /* eslint-disable quotes */
 var isAuthenticated = require("../config/middleware/isAuthenticated")
+const db = require("../models")
+
+
 
 module.exports = function (app) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // route for login or sign up page
- 
-  app.get("/", isAuthenticated, function (req, res) {
-    if (req.user) {
-      res.render("profile")
-    }
+  // isAuthenticated
+  app.get("/", function (req, res) {
+    // if (req.user) {
+    //   console.log("if logged in go to profile")
+    //   res.render("profile")
+    // }
+    // console.log("if not logged in go to index")
     res.render("index")
   })
 
-  // personal profile page route
 
+  // isAuthenticated,
   app.get("/profile", isAuthenticated, function (req, res) {
     if (req.user) {
       res.render("profile")
@@ -33,18 +38,18 @@ module.exports = function (app) {
   app.get("/search/:title", function (req, res) {
     res.render("selected")
   })
-
-  app.get("/signup", isAuthenticated, function (req, res) {
-    if (req.user) {
-      res.render("profile");
-    }
+  // isAuthenticated,
+  app.get("/signup", function (req, res) {
+    // if (req.user) {
+    //   res.render("profile");
+    // }
     res.render("signup");
   })
-  
-  app.get("/login", isAuthenticated, function(req, res) {
-    if (req.user) {
-      res.redirect("profile")
-    }
+  // isAuthenticated,
+  app.get("/login", function (req, res) {
+    // if (req.user) {
+    //   res.redirect("profile")
+    // }
     res.render("login")
   })
 
