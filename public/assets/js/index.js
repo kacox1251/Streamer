@@ -352,20 +352,27 @@ $(document).ready(function () {
     //   console.log("this movie ", movie);
     //   console.log("this tv ", $(this).data("tv"));
 
-    // check which option has information in it, and use that as our title to search by
-    let title = $(this).data("movie") === undefined ? $(this).data("tv") : $(this).data("movie");
-    console.log(title);
 
-    moveToSelected(title);
+    let id = $(this).data("id");
+
+
+    let type = $(this).data("movie") === undefined ? "tv" : "movie";
+    // to be injected to the api address later
+
+    moveToSelected(type, id);
   });
 
-  const moveToSelected = (title) => {
+  const moveToSelected = (type, id) => {
     console.log("do we make it to moveToSelected?")
     //we make it this far and then we bork
-    $.post("/api/selected/:title", {
-      title: title
+    $.post("/api/selected/", {
+      type: type,
+      id: id
     }).then(function (data) {
       console.log("did this work", data);
+      // data is not getting passed over here correctly,
+      // no way to save the data, not sure what to do
+      // localStorage.setItem("dataSet", JSON.stringify(data));
       window.location = ("/selected");
     }).catch(function (err) {
       console.log(err);

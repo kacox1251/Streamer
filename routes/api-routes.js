@@ -7,24 +7,20 @@ const axios = require("axios")
 module.exports = function (app) {
 
   // app.get info from movie db for specific title info
-  app.post("/api/selected/:title", function (req, res) {
+  app.post("/api/selected/", function (req, res) {
     console.log("did we get to the backend selected?");
-    // we get this far but then it borks
+    console.log(req.body.title);
 
-    // getting :title?title and can't remember what we did to fix that 
-    // last time
-
-    // not sure where to get the title to give to the queryURL at the moment :( 
-
-    // const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`
-    // axios
-    //   .get(queryURL)
-    //   .then(function (data) {
-    //     res.json(data)
-    //   })
-    //   .catch(function (e) {
-    //     res.json(e)
-    //   })
+    const queryURL = `https://api.themoviedb.org/3/${req.body.type}/${req.body.id}?api_key=${process.env.API_KEY}&language=en-US`;
+    axios
+      .get(queryURL)
+      .then(function (data) {
+        console.log(data);
+        res.json(data)
+      })
+      .catch(function (e) {
+        res.json(e)
+      })
   })
 
 
@@ -46,6 +42,7 @@ module.exports = function (app) {
         res.json(e)
       })
   })
+
   //   //////////////////////////////////////////////////////////////////////////////////////////////
 
   // app.get for getting all movie information related to a user
