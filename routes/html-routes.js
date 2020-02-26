@@ -20,6 +20,8 @@ module.exports = function (app) {
 
 
 
+
+
   // isAuthenticated, ADD ID HERE
   app.get("/profile/:id", isAuthenticated, function (req, res) {
     if (req.user) {
@@ -30,17 +32,25 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/browse-movies", function (req, res) {
-    res.render("browsemovies")
-  })
+  // Selected Movie / TV Page:
+  // on click for search redirects to selected with movie title
+  // app.get("/selected/:title", isAuthenticated, function (req, res) {
+  //   if (req.user) {
+  //     res.render("selected");
+  //   } else {
+  //     res.render("index");
+  //   }
+  // });
 
-  app.get("/browse-shows", function (req, res) {
-    res.render("browseshows")
-  })
+  app.get("/selected/", function (req, res) {
+    // if (req.user) {
+    res.render("selected");
+    // } else {
+    // res.render("index");
+    // }
+  });
+  // })
 
-  app.get("/search/:title", function (req, res) {
-    res.render("selected")
-  })
   // isAuthenticated,
   app.get("/signup", function (req, res) {
     // if (req.user) {
@@ -56,9 +66,4 @@ module.exports = function (app) {
     res.render("login")
   })
 
-  // Selected Movie / TV Page:
-
-  app.get("/selected", function (req, res) {
-    res.render("selected")
-  })
 }
