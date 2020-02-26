@@ -53,6 +53,7 @@ module.exports = function (app) {
       .get(queryURL)
       .then(function (data) {
         res.json(data)
+        // res.redirect("/selected", data)
       })
       .catch(function (e) {
         res.json(e)
