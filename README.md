@@ -1,7 +1,20 @@
-# streamer
+# Streamer
 
 
 ## Description 
+
+
+## User Story 
+AS A user who watches shows and movies on many different services, 
+I WANT an application to keep track of what I am watching, 
+SO that I don’t lose a show or movie.
+
+
+## Deployment 
+
+
+## Future Development 
+    *
 
 
 ## Credits
@@ -13,10 +26,12 @@ __Collaborators:__
     * [Krystal's GitHub](https://github.com/kacox1251)
 
 __Server-side APIs:__
-
+The Movie DB
 
 __Third-party API:__
-
+Owl Carousel
+Granim.js
+Chart.js
 
 __CSS Framework:__
     * [Materialize](https://materializecss.com/)
@@ -25,7 +40,6 @@ __Favicon Created with:__
 https://favicon.io/
 ![Favicon](./assets/images/Favicon/favicon-16x16.png) 
 
-__Photos:__
 
 
 
