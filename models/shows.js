@@ -7,11 +7,11 @@
 // foreign key pointing to user id, pointing to user id will come in with the route files with the where and includes stuff
 
 module.exports = function (sequelize, DataTypes) {
-	var Show = sequelize.define("Show", {
+	var Shows = sequelize.define("Shows", {
 		api_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
-			primaryKey: true
+			// primaryKey: true
 		},
 		title: {
 			type: DataTypes.STRING,
@@ -30,13 +30,13 @@ module.exports = function (sequelize, DataTypes) {
 		freezeTableName: true
 	});
 
-	Show.associate = function (models) {
-		Show.belongsTo(models.User, {
+	Shows.associate = function (models) {
+		Shows.belongsTo(models.User, {
 			foreignKey: {
 				allowNull: false
 			}
 		});
 	};
 
-	return Show;
+	return Shows;
 };

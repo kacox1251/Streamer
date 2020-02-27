@@ -347,7 +347,8 @@ $(document).ready(function () {
   //on click for heading over to selected page
   $(".carouselImage").on("click", function (event) {
     event.preventDefault();
-    //   console.log("this", this)
+
+    console.log("this", this)
     //   let movie = $(this).data("movie");
     //   console.log("this movie ", movie);
     //   console.log("this tv ", $(this).data("tv"));
@@ -363,20 +364,13 @@ $(document).ready(function () {
   });
 
   const moveToSelected = (type, id) => {
-    console.log("do we make it to moveToSelected?")
-    //we make it this far and then we bork
-    $.post("/api/selected/", {
-      type: type,
-      id: id
-    }).then(function (data) {
-      console.log("did this work", data);
-      // data is not getting passed over here correctly,
-      // no way to save the data, not sure what to do
-      // localStorage.setItem("dataSet", JSON.stringify(data));
-      window.location = ("/selected");
-    }).catch(function (err) {
-      console.log(err);
-    });
+    // console.log("do we make it to moveToSelected?")
+    // console.log("moveToSelected type ", type);
+    // console.log("moveToSelected ", id);
+
+    // don't need a get here, just redirect to the html-route
+    // with the provided information
+    window.location.pathname = `/selected/${type}/${id}`;
   };
 
 });
