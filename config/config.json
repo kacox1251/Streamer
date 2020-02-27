@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "AshleIgH1!~",
+    "password": "root",
     "database": "streamerDB",
     "host": "127.0.0.1",
     "dialect": "mysql",
