@@ -42,15 +42,15 @@ module.exports = function (app) {
   // grabbing it in back end
 
   // route for search functionality
-  app.get("/api/:title", function (req, res) {
+  app.get("/api/:title", (req, res) => {
     const title = req.params.title
     const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`
     axios
       .get(queryURL)
-      .then(function (data) {
+      .then(data => {
         res.json(data.data.results)
       })
-      .catch(function (err) {
+      .catch(err => {
         console.log("Error", err.message)
         res.json(err)
       })
@@ -59,13 +59,13 @@ module.exports = function (app) {
   //   //////////////////////////////////////////////////////////////////////////////////////////////
 
   // app.get for getting all movie information related to a user
-  app.get("/api/profile/:id", function (req, res) {
+  app.get("/api/profile/:id", (req, res) => {
     db.Shows.findAll({
       where: {
         UserId: req.params.id
       },
       include: [db.User]
-    }).then(function (result) {
+    }).then(result => {
       // console.log(result);
       res.json(result);
     });
@@ -115,4 +115,32 @@ module.exports = function (app) {
   //   })
   ////////////////////////////////////////////////////////////
 
+  // route for adding movies and shows to our database
+  app.post("/api/selected/:id", (req, res) => {
+    let show = {
+      user_id: req.params.id, //is this the correct way to grab
+      api_id: api_id,
+      title: title,
+      poster_path: poster_path,
+      want_to_watch: want_to_watch,
+      watching: watching,
+      complete: complete
+    }
+
+    db.Shows.findAll({
+      where: {
+        user_id: req.params.id,
+        api_id: show.api_id
+      }
+    }).then(data => {
+      console.log(data)
+      if (!data) {
+        db.Shows.create(show)
+      } else {
+        db.Shows.update(show)
+      }
+    }).then(() => {
+      res.redirect("/profile")
+    })
+  })
 };
