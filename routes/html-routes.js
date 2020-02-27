@@ -20,6 +20,8 @@ module.exports = function (app) {
 
 
 
+
+
   // isAuthenticated, ADD ID HERE
   app.get("/profile/:id", isAuthenticated, function (req, res) {
     if (req.user) {
@@ -32,9 +34,22 @@ module.exports = function (app) {
 
   // Selected Movie / TV Page:
   // on click for search redirects to selected with movie title
-  app.get("/selected/:title", function (req, res) {
-    res.render("selected")
-  })
+  // app.get("/selected/:title", isAuthenticated, function (req, res) {
+  //   if (req.user) {
+  //     res.render("selected");
+  //   } else {
+  //     res.render("index");
+  //   }
+  // });
+
+  app.get("/selected/", function (req, res) {
+    // if (req.user) {
+    res.render("selected");
+    // } else {
+    // res.render("index");
+    // }
+  });
+  // })
 
   // isAuthenticated,
   app.get("/signup", function (req, res) {
