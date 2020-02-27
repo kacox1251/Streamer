@@ -34,8 +34,8 @@ $(document).ready(function () {
 
   //   });
 
-  // how do I declare what it's grabbing
-  $("#add-watchlist").click(function (event) {
+  //how do I declare what it's grabbing
+  $("#add-watchlist").click(event => {
     event.preventDefault();
 
     //define data based on what is on the page
@@ -53,14 +53,14 @@ $(document).ready(function () {
       {
         dataPass
       },
-      function (data, status) {
-        // console.log("Data: " + data + " || Status: " + status);
+      (data, status) => {
+        console.log("Data: " + data + " || Status: " + status);
         // then redirect to profile
         location.href("/profile");
       });
   });
 
-  $("#mark-start").click(function (event) {
+  $("#mark-start").click(event => {
     event.preventDefault();
     //define data based on what is on the page
     let dataPass = {
@@ -76,14 +76,14 @@ $(document).ready(function () {
       {
         dataPass
       },
-      function (data, status) {
-        // console.log("Data: " + data + " || Status: " + status);
+      (data, status) => {
+        console.log("Data: " + data + " || Status: " + status);
         // then redirect to profile
         location.href("/profile");
       });
   });
 
-  $("#mark-complete").click(function (event) {
+  $("#mark-complete").click(event => {
     event.preventDefault();
     //define data based on what is on the page
     let dataPass = {
@@ -99,15 +99,15 @@ $(document).ready(function () {
       {
         dataPass
       },
-      function (data, status) {
-        // console.log("Data: " + data + " || Status: " + status);
+      (data, status) => {
+        console.log("Data: " + data + " || Status: " + status);
 
         // then redirect to profile
         location.href("/profile");
       });
   });
 
-  $("#delete-watchlist").click(function (event) {
+  $("#delete-watchlist").click(event => {
     event.preventDefault();
 
     // let showToDelete = $(this).whatever we decide on
@@ -116,7 +116,7 @@ $(document).ready(function () {
     $.ajax({
       method: "DELETE",
       url: "/api/selected/:id", // is this the correct route
-    }).then(function (response) {
+    }).then(response => {
       location.href("/profile");
     });
   });
