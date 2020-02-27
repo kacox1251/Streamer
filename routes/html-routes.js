@@ -1,15 +1,17 @@
 /* eslint-disable quotes */
-var isAuthenticated = require("../config/middleware/isAuthenticated")
+
+// FIX ALL VARS TO CONST OR LET
+const isAuthenticated = require("../config/middleware/isAuthenticated")
 const db = require("../models")
 require("dotenv").config()
 const axios = require("axios")
 
-module.exports = function (app) {
+module.exports = app => {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // route for login or sign up page
   // isAuthenticated
-  app.get("/", function (req, res) {
+  app.get("/", (req, res) => {
     // if (req.user) {
     //   console.log("if logged in go to profile")
     //   res.render("profile")
@@ -23,10 +25,29 @@ module.exports = function (app) {
 
 
   // isAuthenticated, ADD ID HERE
-  app.get("/profile/:id", isAuthenticated, function (req, res) {
+  app.get("/profile/:id", isAuthenticated, (req, res) => {
     if (req.user) {
-      // console.log("res.id", res.id);
-      res.render("profile");
+      db.Shows.findAll({
+        where: {
+          UserId: req.user.id
+        }
+      }).then(shows => {
+        let want_to_watch= [];
+        let watching = [];
+        let completed = [];
+        console.log("AMBER", shows)
+        for (let i = 0; i < shows.length; i++) {
+          const show = shows[i].dataValues;
+          if (show.want_to_watch === true) {
+            want_to_watch.push(show);
+          } else if (show.watching === true) {
+            watching.push(show);
+          } else if (show.completed === true) {
+            completed.push(show);
+          }
+        }
+        res.render("profile", { want_to_watch, watching, completed });
+      })
     } else {
       res.render("index");
     }
@@ -56,14 +77,14 @@ module.exports = function (app) {
   ////////////////////////////////////////////////////////////
 
   // isAuthenticated,
-  app.get("/signup", function (req, res) {
+  app.get("/signup", (req, res) => {
     // if (req.user) {
     //   res.render("profile");
     // }
     res.render("signup");
   })
   // isAuthenticated,
-  app.get("/login", function (req, res) {
+  app.get("/login", (req, res) => {
     // if (req.user) {
     //   res.redirect("profile")
     // }
