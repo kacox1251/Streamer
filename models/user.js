@@ -1,9 +1,16 @@
 // Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
-var bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
+var salt = bcrypt.genSaltSync(10);
+var hash = bcrypt.hashSync("B4c0/\/", salt);
+
 // Creating our User model
-module.exports = function (sequelize, DataTypes) {
-	var User = sequelize.define("User", {
+module.exports = (sequelize, DataTypes) => {
+	const User = sequelize.define("User", {
 		// The email cannot be null, and must be a proper email before creation
+		username: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -20,21 +27,21 @@ module.exports = function (sequelize, DataTypes) {
 	}, {
 		freezeTableName: true
 	});
-
-	User.associate = function (models) {
-		// Associating Author with Posts
-		// When an Author is deleted, also delete any associated Posts
-		User.hasMany(models.Shows, {
-			onDelete: "cascade"
-		});
-	};
+    
+    User.associate = models => {
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        User.hasMany(models.Shows, {
+        //   onDelete: "cascade"
+        });
+      };
 	// Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-	User.prototype.validPassword = function (password) {
-		return bcrypt.compareSync(password, this.password);
+	User.prototype.validPassword = password => {
+		return bcrypt.compareSync(password, hash);
 	};
 	// Hooks are automatic methods that run during various phases of the User Model lifecycle
 	// In this case, before a User is created, we will automatically hash their password
-	User.addHook("beforeCreate", function (user) {
+	User.addHook("beforeCreate", user => {
 		user.password = bcrypt.hashSync(
 			user.password,
 			bcrypt.genSaltSync(10),
