@@ -7,7 +7,7 @@ const axios = require("axios")
 module.exports = function (app) {
 
   // app.get info from movie db for specific title info
-  app.post("/api/selected/", function (req, res) {
+  app.post("/api/selected", function (req, res) { 
     console.log("did we get to the backend selected?");
     console.log(req.body.title);
 
@@ -29,18 +29,18 @@ module.exports = function (app) {
   // I believe we'll pass this info from the front end rather than
   // grabbing it in back end
 
-  // app.post for search
-  app.post("/api/search", function (req, res) {
-    const title = req.body.title
+  // route for search functionality
+  app.get("/api/:title", function (req, res) {
+    const title = req.params.title
     const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`
     axios
       .get(queryURL)
       .then(function (data) {
-        res.json(data)
-        // res.redirect("/selected", data)
+        res.json(data.data.results)
       })
-      .catch(function (e) {
-        res.json(e)
+      .catch(function (err) {
+        console.log("Error", err.message )
+        res.json(err)
       })
   })
 
