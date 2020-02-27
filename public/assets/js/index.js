@@ -268,15 +268,15 @@ $(document).ready(function () {
 
   const popularMovies = () => {
 
-    for (var i = 0; i < hardcodeMovies.length; i++) {
+    for (let i = 0; i < hardcodeMovies.length; i++) {
 
-      var newDiv = $("<div>");
+      let newDiv = $("<div>");
       newDiv.addClass("item");
 
-      var bkgImg = hardcodeMovies[i].poster_path;
+      const bkgImg = hardcodeMovies[i].poster_path;
 
-      var img = $("<img>");
-      var imgSrc = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + bkgImg;
+      let img = $("<img>");
+      const imgSrc = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + bkgImg;
 
       img.attr("src", imgSrc);
       img.addClass("carouselImage");
@@ -296,16 +296,16 @@ $(document).ready(function () {
 
   const popularTv = () => {
     //div with class, image with info, append image to div, append div to parent
-    for (var i = 0; i < hardcodeTV.length; i++) {
+    for (let i = 0; i < hardcodeTV.length; i++) {
 
-      var newDiv = $("<div>");
+      let newDiv = $("<div>");
       newDiv.addClass("item");
 
-      var bkgImg = hardcodeTV[i].poster_path;
+      const bkgImg = hardcodeTV[i].poster_path;
 
 
-      var img = $("<img>");
-      var imgSrc = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + bkgImg;
+      let img = $("<img>");
+      const imgSrc = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + bkgImg;
 
 
       img.attr("src", imgSrc);
@@ -378,7 +378,7 @@ $(document).ready(function () {
   // click event for search functionality
   $("#searchbutton").on("click", function(event) {
     event.preventDefault();
-    var search = $("#search").val().trim();
+    let search = $("#search").val().trim();
     search = search.replace(/\s+/g, "").toLowerCase();
     location.assign("/api/" + search)
   
