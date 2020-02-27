@@ -30,12 +30,12 @@ __Collaborators:__
     * [Krystal's GitHub](https://github.com/kacox1251)
 
 __Server-side APIs:__
-    * [The Movie Database] (https://www.themoviedb.org/)
+    * [The Movie Database](https://www.themoviedb.org/)
 
 __Third-party API:__
-    * [Owl Carousel] (https://owlcarousel2.github.io/OwlCarousel2/)
-    * [Granim.js] ()
-    * [Chart.js] ()
+    * [Owl Carousel](https://owlcarousel2.github.io/OwlCarousel2/)
+    * [Granim.js](https://sarcadass.github.io/granim.js/index.html)
+    * [Chart.js](https://www.chartjs.org/)
 
 __CSS Framework:__
     * [Materialize](https://materializecss.com/)
