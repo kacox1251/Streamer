@@ -51,4 +51,11 @@ module.exports = function (app) {
     res.render("login")
   })
 
+  app.get("/search", function (req, res) {
+    // if (req.user) {
+    //   res.redirect("profile")
+    // }
+    res.render("search")
+  })
+
 }

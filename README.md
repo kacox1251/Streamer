@@ -4,17 +4,21 @@
 ## Description 
 
 
+
 ## User Story 
 AS A user who watches shows and movies on many different services, 
 I WANT an application to keep track of what I am watching, 
 SO that I don’t lose a show or movie.
 
 
+
 ## Deployment 
+
 
 
 ## Future Development 
     *
+
 
 
 ## Credits
@@ -26,12 +30,12 @@ __Collaborators:__
     * [Krystal's GitHub](https://github.com/kacox1251)
 
 __Server-side APIs:__
-The Movie DB
+    * [The Movie Database] (https://www.themoviedb.org/)
 
 __Third-party API:__
-Owl Carousel
-Granim.js
-Chart.js
+    * [Owl Carousel] (https://owlcarousel2.github.io/OwlCarousel2/)
+    * [Granim.js] ()
+    * [Chart.js] ()
 
 __CSS Framework:__
     * [Materialize](https://materializecss.com/)
