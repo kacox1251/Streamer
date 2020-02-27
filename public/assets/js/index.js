@@ -1,3 +1,5 @@
+// import { response } from "express";
+
 // console.log("Index js here");
 
 $(document).ready(function () {
@@ -373,5 +375,13 @@ $(document).ready(function () {
     window.location.pathname = `/selected/${type}/${id}`;
   };
 
-});
+  // click event for search functionality
+  $("#searchbutton").on("click", function(event) {
+    event.preventDefault();
+    var search = $("#search").val().trim();
+    search = search.replace(/\s+/g, "").toLowerCase();
+    location.assign("/api/" + search)
+  
+  })
 
+})
