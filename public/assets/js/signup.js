@@ -1,4 +1,4 @@
-console.log("signup js here");
+// console.log("signup js here");
 
 $(document).ready(function () {
   console.log("signup doc ready");
