@@ -9,7 +9,7 @@ p {
 
 h1, h2, h3, h4, h5 {
   font-family: 'Calistoga', cursive;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .darkGreen {
@@ -61,6 +61,11 @@ h1, h2, h3, h4, h5 {
   background-color: #da674a;
 } */
 
+#poster-move {
+  position: relative;
+  top: 2rem;
+  left: 2rem;
+}
 
 #page-container1 {
   position: relative;
