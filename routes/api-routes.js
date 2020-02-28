@@ -48,6 +48,7 @@ module.exports = function (app) {
     axios
       .get(queryURL)
       .then(function (data) {
+        console.log("/api/title search: ", data);
         res.json(data.data.results)
       })
       .catch(function (err) {
