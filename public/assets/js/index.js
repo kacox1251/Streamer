@@ -387,15 +387,17 @@ $(document).ready(function () {
 
 
     var search = $("#search").val().trim();
-    var mblSearch = $("#search2").val().trim();
     search = search.replace(/\s+/g, "").toLowerCase();
-    mblSearch = mblSearch.replace(/\s+/g, "").toLowerCase();
     if(search) {
-        console.log(search);
-        location.assign("/api/" + search);
+      console.log(search);
+      location.assign("/selected");
+      console.log("/api/" + search);
     } else {
-        console.log(mblSearch);
-        location.assign("/api/" + mblSearch)
+      var mblSearch = $("#search2").val().trim();
+      mblSearch = mblSearch.replace(/\s+/g, "").toLowerCase();
+      console.log(mblSearch);
+      location.assign("/selected");
+      console.log("/api/" + mblSearch)
     }
   });
 });
