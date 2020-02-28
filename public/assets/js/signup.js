@@ -1,4 +1,4 @@
-console.log("signup js here");
+// console.log("signup js here");
 
 $(document).ready(function () {
   console.log("signup doc ready");
@@ -32,6 +32,7 @@ $(document).ready(function () {
     }
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.email, userData.password);
+    userNameInput.val("");
     emailInput.val("");
     passwordInput.val("");
   });

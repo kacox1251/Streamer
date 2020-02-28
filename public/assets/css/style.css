@@ -4,6 +4,7 @@ body {
 
 p {
   font-family: 'Alatsi', sans-serif;
+  padding: 1rem;
 }
 
 h1, h2, h3, h4, h5 {
