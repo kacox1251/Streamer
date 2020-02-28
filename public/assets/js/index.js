@@ -1,7 +1,5 @@
 // import { response } from "express";
 
-// console.log("Index js here");
-
 $(document).ready(function () {
 
   // poster_path, id, title, vote_average, overview
@@ -341,9 +339,6 @@ $(document).ready(function () {
 
   };
 
-
-  popularMovies();
-  popularTv();
   generateOwl();
 
   //on click for heading over to selected page
@@ -370,18 +365,16 @@ $(document).ready(function () {
     // console.log("moveToSelected type ", type);
     // console.log("moveToSelected ", id);
 
-    // don't need a get here, just redirect to the html-route
-    // with the provided information
     window.location.pathname = `/selected/${type}/${id}`;
   };
 
   // click event for search functionality
-  $("#searchbutton").on("click", function(event) {
+  $("#searchbutton").on("click", function (event) {
     event.preventDefault();
     let search = $("#search").val().trim();
     search = search.replace(/\s+/g, "").toLowerCase();
     location.assign("/api/" + search)
-  
+
   })
 
 })

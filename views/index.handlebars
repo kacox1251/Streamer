@@ -1,30 +1,31 @@
 <div class="container">
   <div class="row">
     <div class="darkGreen z-depth-5 col xl9">
-      <p> This is where we'll talk about what the application does.
-        I don't want to go into too much detail at the moment, but we'll get there together, as a team! </p>
+      <p> Not sure where to get started? Check out some selections from below! Here we have some of the top rated US
+        films from all time, and some of the top rated tv shows currently on air! </p>
     </div>
   </div>
 
   <!-- need a popular movie carousel here -->
   <div class="row">
     <div class="darkGreen z-depth-5 col xl9">
-      <p> This is where we'll browse movies! </p>
+      <h5> Top Rated Films </h5>
       <div class="owl-carousel owl-theme" id="popMovies">
         {{#each movies}}
         {{> movies/imovie-block}}
         {{/each}}
       </div>
-      </div>
-
     </div>
+  </div>
 
     <!-- need a popular tv carousel here -->
     <div class="row">
       <div class="darkGreen z-depth-5 col xl9">
-        <p> This is where we'll browse tv shows! </p>
+        <h5> On Air Right Now </h5>
         <div class="owl-carousel owl-theme" id="popTv">
-
+          {{#each tv}}
+          {{> tv/itv-block}}
+          {{/each}}
         </div>
       </div>
     </div>
