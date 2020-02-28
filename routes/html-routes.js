@@ -287,10 +287,33 @@ module.exports = function (app) {
 
 
   // isAuthenticated, ADD ID HERE
-  app.get("/profile/:id", isAuthenticated, function (req, res) {
+  app.get("/profile/:id", isAuthenticated, function(req, res) {
     if (req.user) {
-      // console.log("res.id", res.id);
-      res.render("profile");
+      db.Shows.findAll({
+        where: {
+          UserId: req.user.id
+        }
+      }).then(function(shows) {
+        let want_to_watch= [];
+        let watching = [];
+        let completed = [];
+        console.log("AMBER", shows)
+        for (let i = 0; i < shows.length; i++) {
+          const show = shows[i].dataValues;
+          
+          if (show.want_to_watch && !show.watching && !show.completed) {
+            want_to_watch.push(show);
+            console.log("want to watch", want_to_watch);
+          } else if (!show.want_to_watch && show.watching && !show.completed) {
+            watching.push(show);
+            console.log("watching",watching);
+          } else if (!show.want_to_watch && !show.watching && show.completed) {
+            completed.push(show);
+            console.log("completed", completed);
+          }
+        }
+        res.render("profile", { want_to_watch, watching, completed });
+      })
     } else {
       res.render("index");
     }
