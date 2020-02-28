@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="darkGreen z-depth-5 col s9">
-      <h4 id="title"> {{title}} </h4>
+      <h3 id="title"> {{title}} </h3>
 
     </div>
   </div>
@@ -10,14 +10,13 @@
   <div class="row">
 
     <!-- left hand side -->
-    <div class="col s4">
+    <div class="col s4" id="poster-move">
 
       <div class="darkGreen z-depth-5 row">
-        <p id="poster"> Movie Poster will Go Here </p>
         <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{poster}}" data-id={{api_id}} class="carouselImage">
       </div>
 
-      <div class="darkGreen z-depth-5 row">
+      {{!-- <div class="darkGreen z-depth-5 row">
 
         <button class="btn-floating btn-large waves-effect waves-light btn" id="add-watchlist">Add To Future
           Watchlist</button>
@@ -28,18 +27,43 @@
           Watchlist</button>
 
 
-      </div>
+      </div> --}}
     </div>
 
     <!-- right hand side -->
     <div class="col s7 offset-s1">
 
       <div class="darkGreen z-depth-5 row" id="selected-info">
-        <p id="summary"> Movie Summary Will Go Here </p>
+        <h5 id="summary"> Summary </h5>
         <p>{{summary}}</p>
-        <p id="rating">Rating</p>
+        <h5 id="rating">Rating</h5>
         <p>This one got a {{rating}} out of 10!</p>
 
       </div>
 
     </div>
+
+    <div class="row">
+
+      <div class="darkGreen z-depth-5 row">
+
+        <button class="btn-floating btn-large waves-effect waves-light btn" id="add-watchlist">
+          <p>Add<br> To Future
+            Watchlist</p>
+        </button>
+        <button class="btn-floating btn-large waves-effect waves-light btn" id="mark-start">
+          <p>Add<br> To Started
+            Watchlist</p>
+        </button>
+        <button class="btn-floating btn-large waves-effect waves-light btn" id="mark-complete">
+          <p>Add<br> To
+            Completed
+            Watchlist</p>
+        </button>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
