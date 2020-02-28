@@ -6,12 +6,12 @@ const db = require("../models")
 require("dotenv").config()
 const axios = require("axios")
 
-module.exports = app => {
+module.exports = function(app) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // route for login or sign up page
   // isAuthenticated
-  app.get("/", (req, res) => {
+  app.get("/", function(req, res) {
     // if (req.user) {
     //   console.log("if logged in go to profile")
     //   res.render("profile")
@@ -25,13 +25,13 @@ module.exports = app => {
 
 
   // isAuthenticated, ADD ID HERE
-  app.get("/profile/:id", isAuthenticated, (req, res) => {
+  app.get("/profile/:id", isAuthenticated, function(req, res) {
     if (req.user) {
       db.Shows.findAll({
         where: {
           UserId: req.user.id
         }
-      }).then(shows => {
+      }).then(function(shows) {
         let want_to_watch= [];
         let watching = [];
         let completed = [];
@@ -77,14 +77,14 @@ module.exports = app => {
   ////////////////////////////////////////////////////////////
 
   // isAuthenticated,
-  app.get("/signup", (req, res) => {
+  app.get("/signup", function(req, res) {
     // if (req.user) {
     //   res.render("profile");
     // }
     res.render("signup");
   })
   // isAuthenticated,
-  app.get("/login", (req, res) => {
+  app.get("/login", function(req, res) {
     // if (req.user) {
     //   res.redirect("profile")
     // }
@@ -92,7 +92,7 @@ module.exports = app => {
   })
 
   //THIS IS THE WORKING ROUTE FOR SELECTED
-  app.get("/selected/:type/:id", (req, res) => {
+  app.get("/selected/:type/:id", function(req, res) {
     const queryURL = `https://api.themoviedb.org/3/${req.params.type}/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`;
     console.log("queryURL", queryURL)
     axios

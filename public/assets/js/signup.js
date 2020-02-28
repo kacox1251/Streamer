@@ -18,7 +18,7 @@ $(document).ready(function() {
 	//   data.redirect("/profile");
 	// })
 
-	$("#signUpForm").on("submit", event => {
+	$("#signUpForm").on("submit", function(event) {
 		event.preventDefault();
 		console.log("Did it do it?");
 		const userData = {
@@ -46,7 +46,7 @@ $(document).ready(function() {
 			email: email,
 			password: password
 		})
-			.then(data => {
+			.then(function(data) {
         // res.json(data);
         console.log("got here" + data);
         // ifNewUser();

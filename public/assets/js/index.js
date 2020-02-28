@@ -266,7 +266,7 @@ $(document).ready(function () {
   ]
 
 
-  const popularMovies = () => {
+  const popularMovies = function() {
 
     for (let i = 0; i < hardcodeMovies.length; i++) {
 
@@ -294,7 +294,7 @@ $(document).ready(function () {
     };
   };
 
-  const popularTv = () => {
+  const popularTv = function() {
     //div with class, image with info, append image to div, append div to parent
     for (let i = 0; i < hardcodeTV.length; i++) {
 
@@ -321,7 +321,7 @@ $(document).ready(function () {
     };
   };
 
-  const generateOwl = () => {
+  const generateOwl = function() {
     $('.owl-carousel').owlCarousel({
       loop: true,
       margin: 10,
@@ -347,7 +347,7 @@ $(document).ready(function () {
   generateOwl();
 
   //on click for heading over to selected page
-  $(".carouselImage").on("click", function (event) {
+  $(".carouselImage").on("click", function(event) {
     event.preventDefault();
 
     console.log("this", this)
@@ -365,7 +365,7 @@ $(document).ready(function () {
     moveToSelected(type, id);
   });
 
-  const moveToSelected = (type, id) => {
+  const moveToSelected = function(type, id) {
     // console.log("do we make it to moveToSelected?")
     // console.log("moveToSelected type ", type);
     // console.log("moveToSelected ", id);

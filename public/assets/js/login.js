@@ -5,7 +5,7 @@ $(document).ready(function () {
   const passwordInput = $("#login-pwd");
 
   // When the form is submitted, we validate there's an email and password entered
-  $("#loginForm").on("submit", event => {
+  $("#loginForm").on("submit", function(event) {
     event.preventDefault();
     const userData = {
       email: emailInput.val().trim(),
@@ -28,14 +28,14 @@ $(document).ready(function () {
       email: email,
       password: password
     })
-      .then(data => {
+      .then(function(data) {
         console.log("Did we did it?", data)
         // if(data.message === "success") {
         // }
         window.location = (`/profile/${data.id}`); //like this?
         // If there's an error, log the error
       })
-      .catch(err => {
+      .catch(function(err) {
         console.log(err);
       });
   }

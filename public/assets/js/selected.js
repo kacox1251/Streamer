@@ -35,7 +35,7 @@ $(document).ready(function () {
   //   });
 
   //how do I declare what it's grabbing
-  $("#add-watchlist").click(event => {
+  $("#add-watchlist").click(function(event) {
     event.preventDefault();
 
     //define data based on what is on the page
@@ -53,14 +53,14 @@ $(document).ready(function () {
       {
         dataPass
       },
-      (data, status) => {
+      function(data, status) {
         console.log("Data: " + data + " || Status: " + status);
         // then redirect to profile
         location.href("/profile");
       });
   });
 
-  $("#mark-start").click(event => {
+  $("#mark-start").click(function(event) {
     event.preventDefault();
     //define data based on what is on the page
     let dataPass = {
@@ -76,14 +76,14 @@ $(document).ready(function () {
       {
         dataPass
       },
-      (data, status) => {
+      function(data, status) {
         console.log("Data: " + data + " || Status: " + status);
         // then redirect to profile
         location.href("/profile");
       });
   });
 
-  $("#mark-complete").click(event => {
+  $("#mark-complete").click(function(event) {
     event.preventDefault();
     //define data based on what is on the page
     let dataPass = {
@@ -99,7 +99,7 @@ $(document).ready(function () {
       {
         dataPass
       },
-      (data, status) => {
+      function(data, status) {
         console.log("Data: " + data + " || Status: " + status);
 
         // then redirect to profile
@@ -107,7 +107,7 @@ $(document).ready(function () {
       });
   });
 
-  $("#delete-watchlist").click(event => {
+  $("#delete-watchlist").click(function(event) {
     event.preventDefault();
 
     // let showToDelete = $(this).whatever we decide on
@@ -116,7 +116,7 @@ $(document).ready(function () {
     $.ajax({
       method: "DELETE",
       url: "/api/selected/:id", // is this the correct route
-    }).then(response => {
+    }).then(function(response) {
       location.href("/profile");
     });
   });

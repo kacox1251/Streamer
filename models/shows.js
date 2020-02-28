@@ -1,5 +1,5 @@
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = function(sequelize, DataTypes) {
 	const Shows = sequelize.define("Shows", {
 		api_id: {
 			type: DataTypes.INTEGER,
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 		freezeTableName: true
 	});
 
-	Shows.associate = models => {
+	Shows.associate = function(models) {
 		Shows.belongsTo(models.User, {
 			foreignKey: {
 				allowNull: false
