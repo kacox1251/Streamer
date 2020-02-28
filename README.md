@@ -2,7 +2,22 @@
 
 
 ## Description 
+Streamer is an application that allows users to create an account, 
+and keep track of movies and TV shows that they want to watch.
 
+As a team we felt motivated to create this application because the world has so many different shows and movies. 
+Some of which you can only find on one of the many specific platforms available today. Streamer aims to help users filter and organize
+all of the many options so that no one loses track of a favorite show.
+
+Streamer uses authentication based log-ins to grab and store data into our database. 
+Each user has their own data, where they can keep track of the shows/movies they wish to watch, 
+what shows/movies they have already started, and which shows they have completed.
+Each user can find a title by either searching for it specifically, or they can browse the top 20
+mos popular on the home page. Their profile shows all of the titles the user has stored, as well as a chart to give a good visual
+of current viewing habits.
+
+This project has been a fun and challenging experience. It showcases just how far we have all come
+in learning these new technologies, and our journey as developers.
 
 
 ## User Story 
@@ -17,7 +32,13 @@ SO that I don’t lose a show or movie.
 
 
 ## Future Development 
-    *
+    * Keep track of episodes and what episode a user is on.
+    * Show a list of where to stream shows/movies.
+    * Add profile pictures for user profile customization.
+    * Add browse pages for movies and TV shows. Including filters by most popular, genre, etc.
+    * Give user the option to mark favorites/least favorites.
+    * Track time spent watching per user.
+
 
 
 
@@ -43,8 +64,6 @@ __CSS Framework:__
 __Favicon Created with:__
 https://favicon.io/
 ![Favicon](./assets/images/Favicon/favicon-16x16.png) 
-
-
 
 
 ## License

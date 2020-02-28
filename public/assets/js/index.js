@@ -382,12 +382,20 @@ $(document).ready(function () {
   };
 
   // click event for search functionality
-  $("#searchbutton").on("click", function(event) {
+  $(".searchform").on("submit", function(event) {
     event.preventDefault();
-    var search = $("#search").val().trim();
-    search = search.replace(/\s+/g, "").toLowerCase();
-    location.assign("/api/" + search)
-  
-  })
 
-})
+
+    var search = $("#search").val().trim();
+    var mblSearch = $("#search2").val().trim();
+    search = search.replace(/\s+/g, "").toLowerCase();
+    mblSearch = mblSearch.replace(/\s+/g, "").toLowerCase();
+    if(search) {
+        console.log(search);
+        location.assign("/api/" + search);
+    } else {
+        console.log(mblSearch);
+        location.assign("/api/" + mblSearch)
+    }
+  });
+});
