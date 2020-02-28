@@ -38,57 +38,67 @@
 </head>
 
 <body>
-  <div>
-    <nav class="canvas-interactive-wrapper">
-      <canvas id="canvas-interactive"></canvas>
-      <div class="nav-wrapper cta-wrapper">
-        <a href="#!" class="brand-logo" style="color: black;"><img id="streamer-logo"
-            src="/assets/img/streamer-logo.png"></a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger" style="color: black;"><i
-            class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/" style="color: black;">Home</a></li>
-          <li><a href="/profile" style="color: black;">Profile</a></li>
-          <li>
-            <form class="hide-on-med-and-down" id="form1">
-              <div class="input-field" style="max-width: 500pt; height: auto;">
-                <input id="search" type="search">
-                <label class="label-icon" for="search">
-                  <button id="searchbutton"><i class="material-icons" style="color: black;">search</i></button></label>
-                <i class="material-icons" style="color: black;">close</i>
-                <div id="searchResults"></div>
-              </div>
-            </form>
-          </li>
-          <li><a href="/signup" style="color: black;">Sign-Up</a></li>
-          <li><a href="/login" style="color: black;">Log-In</a></li>
-          <li><a href="/logout" style="color: black;">Log-Out</a></li>
-        </ul>
+  <div id="page-container1">
+    <div id="content-wrap1">
+      <div>
+        <nav class="canvas-interactive-wrapper">
+          <canvas id="canvas-interactive"></canvas>
+          <div class="nav-wrapper cta-wrapper">
+            <a href="/" class="brand-logo" style="color: black;"><img id="streamer-logo"
+                src="/assets/img/streamer-logo.png"></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger" style="color: black;"><i
+                class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="/" style="color: black;">Home</a></li>
+              <li><a href="/profile" style="color: black;">Profile</a></li>
+              <li>
+                <form class="hide-on-med-and-down searchform" id="form1">
+                  <div class="input-field" style="max-width: 500pt; height: auto;">
+                    <input id="search" type="search">
+                    <label class="label-icon" for="search">
+                      <i class="material-icons"
+                        style="color: black;">search</i></label>
+                    <i class="material-icons" style="color: black;">close</i>
+                    <div id="searchResults"></div>
+                  </div>
+                </form>
+              </li>
+              <li><a href="/signup" style="color: black;">Sign-Up</a></li>
+              <li><a href="/login" style="color: black;">Log-In</a></li>
+            </ul>
+          </div>
+        </nav>
       </div>
-    </nav>
-  </div>
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="/">Home</a></li>
-    <li><a href="/profile">Profile</a></li>
-    <li><a href="/search">Search</a></li>
-    <li><a href="/signup">Sign-up</a></li>
-    <li><a href="/login">Log-In</a></li>
-  </ul>
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="/">Home</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/search">Search</a></li>
+        <li><a href="/signup">Sign-up</a></li>
+        <li><a href="/login">Log-In</a></li>
+      </ul>
 
-  {{{body}}}
+      {{{body}}}
+    </div>
+    {{!-- Footer --}}
+    <div id="footer1">
+      <img id="tmdb" src="https://www.themoviedb.org/assets/2/v4/logos/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png">
+    </div>
+  </div>            
+
 
   <!-- Compiled and minified JavaScript -->
+  <script
+			src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sid="page-container"ha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous">//jQuery Link </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.js"></script>
   {{!-- This needs to be called last so it can override other options --}}
 
 
   <script>
-    $(".dropdown-trigger").dropdown();
-
     $(document).ready(function () {
       $('.sidenav').sidenav();
     });
@@ -113,10 +123,6 @@
         }
       }
     });
-
-
-
-
   </script>
 
 </body>

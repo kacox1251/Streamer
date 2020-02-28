@@ -66,3 +66,27 @@ h1, h2, h3, h4, h5 {
   top: 2rem;
   left: 2rem;
 }
+
+#page-container1 {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap1 {
+  padding-bottom: 5rem;
+}
+
+#footer1 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5rem;
+  text-align: center;
+  background: #2b4d59;
+  color: #ffdc7c;
+}
+
+#tmdb {
+  width: 150px;
+  margin-top: 10px;
+}
