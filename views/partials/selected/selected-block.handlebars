@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="darkGreen z-depth-5 col s9">
-      <h3 id="title"> {{title}} </h3>
+      <h3 class="title"> {{title}} </h3>
 
     </div>
   </div>
@@ -13,7 +13,7 @@
     <div class="col s4" id="poster-move">
 
       <div class="darkGreen z-depth-5 row">
-        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{poster}}" data-id={{api_id}} class="carouselImage">
+        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{poster_path}}" class="carouselImage posterImage" data-id={{api_id}} data-poster={{poster_path}}>
       </div>
 
     </div>
@@ -35,15 +35,15 @@
 
       <div class="darkGreen z-depth-5 row">
 
-        <button class="btn-floating btn-large waves-effect waves-light btn" id="add-watchlist">
+        <button class="btn-floating btn-large waves-effect waves-light btn add-watchlist">
           <p>Add<br> To Future
             Watchlist</p>
         </button>
-        <button class="btn-floating btn-large waves-effect waves-light btn" id="mark-start">
+        <button class="btn-floating btn-large waves-effect waves-light btn mark-start">
           <p>Add<br> To Started
             Watchlist</p>
         </button>
-        <button class="btn-floating btn-large waves-effect waves-light btn" id="mark-complete">
+        <button class="btn-floating btn-large waves-effect waves-light btn mark-complete">
           <p>Add<br> To
             Completed
             Watchlist</p>

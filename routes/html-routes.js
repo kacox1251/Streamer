@@ -299,6 +299,7 @@ module.exports = function (app) {
                 id: req.user.id
             }
         }).then(function(user) {
+            // window.localStorage.setItem("UserId", req.user.id);
             // console.log("user", user[0].dataValues);
             let username = user[0].dataValues.username;
             let want_to_watch= [];
@@ -323,7 +324,11 @@ module.exports = function (app) {
               }
             }
             res.render("profile", { username, want_to_watch, watching, completed });
+        }).catch(function(e) {
+          console.log(e);
         })
+      }).catch(function(e) {
+        console.log(e);
       })
     } else {
       res.render("login");
@@ -402,21 +407,25 @@ module.exports = function (app) {
     axios
       .get(queryURL)
       .then(function (data) {
-        console.log(data.data.id, "THIS IS THE DATA");
+        // console.log(data.data.id, "THIS IS THE DATA");
+        // console.log("this is the data",data);
         let dataPass = {
           selected: [{
             // selected: {
             api_id: data.data.id,
             summary: data.data.overview,
-            poster: data.data.poster_path,
+            media_type: data.data.media_type,
+            poster_path: data.data.poster_path,
             title: data.data.title || data.data.name,
             rating: data.data.vote_average
             // }
           }]
         }
-        console.log(dataPass, "DATA PASS ARRAY OBJECT");
+        // console.log(dataPass, "DATA PASS ARRAY OBJECT");
 
         res.render("selected", dataPass); // then the object for handlebars
+      }).catch(function(e) {
+        console.log(e);
       });
   })
 

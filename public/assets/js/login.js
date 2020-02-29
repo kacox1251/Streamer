@@ -31,6 +31,7 @@ $(document).ready(function () {
     })
       .then(function (data) {
         console.log("Did we did it?", data)
+        localStorage.setItem("user-id", data.id);
         window.location = (`/profile/${data.id}`); //like this?
         // If there's an error, log the error
       })

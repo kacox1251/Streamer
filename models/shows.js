@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		media_type: {
 			type: DataTypes.STRING,
-			allowNull: false
+			// allowNull: false
 		},
 		want_to_watch: {
 			type: DataTypes.BOOLEAN
