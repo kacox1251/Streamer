@@ -287,26 +287,26 @@ module.exports = function (app) {
 
 
   // isAuthenticated, ADD ID HERE
-  app.get("/profile/:id", isAuthenticated, function(req, res) {
+  app.get("/profile/:id", isAuthenticated, function (req, res) {
     if (req.user) {
       db.Shows.findAll({
         where: {
           UserId: req.user.id
         }
-      }).then(function(shows) {
-        let want_to_watch= [];
+      }).then(function (shows) {
+        let want_to_watch = [];
         let watching = [];
         let completed = [];
         console.log("AMBER", shows)
         for (let i = 0; i < shows.length; i++) {
           const show = shows[i].dataValues;
-          
+
           if (show.want_to_watch && !show.watching && !show.completed) {
             want_to_watch.push(show);
             console.log("want to watch", want_to_watch);
           } else if (!show.want_to_watch && show.watching && !show.completed) {
             watching.push(show);
-            console.log("watching",watching);
+            console.log("watching", watching);
           } else if (!show.want_to_watch && !show.watching && show.completed) {
             completed.push(show);
             console.log("completed", completed);
@@ -315,7 +315,7 @@ module.exports = function (app) {
         res.render("profile", { want_to_watch, watching, completed });
       })
     } else {
-      res.render("index");
+      res.render("login");
     }
   });
 
@@ -323,22 +323,65 @@ module.exports = function (app) {
   // Selected Movie / TV Page:
   // on click for search redirects to selected with movie title
   app.get("/selected/:title", isAuthenticated, function (req, res) {
-    if (req.user) {
-      res.render("selected");
-    } else {
-      res.render("index");
-    }
+    // if (req.user) {
+    const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${req.params.title}&page=1&include_adult=false&region=US`
+    // console.log("search url: ", queryURL);
+    axios
+      .get(queryURL)
+      .then(function (data) {
+        // console.log(data, "SEARCH DATA");
+        // console.log("searchData results", data.data.results);
+
+        let results = data.data.results;
+        console.log(results, "RESULTS")
+
+        let newArray = [];
+        for (i = 0; i < results.length; i++) {
+          newArray.push(
+            {
+              api_id: results[i].id,
+              summary: results[i].overview,
+              poster: results[i].poster_path,
+              title: results[i].title || results[i].name,
+              rating: results[i].vote_average
+            }
+          );
+        }
+
+        let dataPass = {
+          selected: newArray
+        }
+
+        // console.log(dataPass, "<<<DATA PASS")
+        // let dataPass = {
+        //   array: [{
+        //     api_id: results.id,
+        //     summary: results.overview,
+        //     poster: results.poster_path,
+        //     title: results.title || results.name,
+        //     rating: results.vote_average
+        //   }]
+        // }
+        res.render("selected", dataPass);
+      });
   });
   ////////////////////////////////////////////////////////////
 
   // DONT DELETE YET PLEASE//////////////////////////////
-  app.get("/api/selected/", function (req, res) {
-    // if (req.user) {
-    res.render("selected", req.body[0]);
-    // } else {
-    // res.render("index");
-    // }
-  });
+  // app.get("/api/selected/", function (req, res) {
+  //   if (req.user) {
+  //     const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${req.params.typ}&language=en-US&query=${title}&page=1&include_adult=false&region=US`
+  //     axios
+  //       .get(queryURL)
+  //       .then(function (searchData) {
+  //         console.log("searchData", searchData);
+  //       })
+
+  //     // res.render("selected", req.body[0]);
+  //   } else {
+  //     res.render("index");
+  //   }
+  // });
   // })
   ////////////////////////////////////////////////////////////
 
@@ -366,15 +409,17 @@ module.exports = function (app) {
       .then(function (data) {
         console.log(data.data.id, "THIS IS THE DATA");
         let dataPass = {
-          // selected: {
-          api_id: data.data.id,
-          summary: data.data.overview,
-          poster: data.data.poster_path,
-          title: data.data.title || data.data.name,
-          rating: data.data.vote_average
-          // }
+          selected: [{
+            // selected: {
+            api_id: data.data.id,
+            summary: data.data.overview,
+            poster: data.data.poster_path,
+            title: data.data.title || data.data.name,
+            rating: data.data.vote_average
+            // }
+          }]
         }
-        console.log(dataPass);
+        console.log(dataPass, "DATA PASS ARRAY OBJECT");
 
         res.render("selected", dataPass); // then the object for handlebars
       });

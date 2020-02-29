@@ -1,6 +1,8 @@
 
 $(document).ready(function () {
 
+
+
   // // get for carousel information
   // function getCarousel() {
 
