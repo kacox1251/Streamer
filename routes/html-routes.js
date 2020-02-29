@@ -361,11 +361,12 @@ module.exports = function (app) {
 
           let newArray = [];
           for (i = 0; i < results.length; i++) {
+            console.log("pster path",results[0].poster_path);
             newArray.push(
               {
                 api_id: results[i].id,
                 summary: results[i].overview,
-                poster: results[i].poster_path,
+                poster_path: results[i].poster_path,
                 title: results[i].title || results[i].name,
                 rating: results[i].vote_average
               }
