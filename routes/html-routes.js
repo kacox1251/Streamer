@@ -357,6 +357,10 @@ module.exports = function (app) {
     res.render("login")
   })
 
+  app.get("/search", function (req, res) {
+    res.render("search")
+  })
+
   //THIS IS THE WORKING ROUTE FOR SELECTED
   app.get("/selected/:type/:id", (req, res) => {
     const queryURL = `https://api.themoviedb.org/3/${req.params.type}/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`;

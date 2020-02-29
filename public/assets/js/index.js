@@ -67,5 +67,8 @@ $(document).ready(function () {
       location.assign("/selected");
       console.log("/api/" + mblSearch)
     }
+
+    search.val("");
+    mblSearch.val("");
   });
 });
