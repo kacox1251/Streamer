@@ -56,17 +56,18 @@ $(document).ready(function () {
     var title = $("#search").val().trim();
     title = title.replace(/\s+/g, "").toLowerCase();
 
-    console.log(title);
-    window.location.pathname = `/selected/${title}`;
+    if (title) {
 
-    // if (title) {
-    //   console.log("/api/" + search);
-    // } else {
-    //   var mblSearch = $("#search2").val().trim();
-    //   mblSearch = mblSearch.replace(/\s+/g, "").toLowerCase();
-    //   console.log(mblSearch);
-    //   location.assign(`/selected/${mblSearch}`);
-    //   console.log("/api/" + mblSearch)
-    // }
+      window.location.pathname = `/selected/${title}`;
+    } else {
+      var mblSearch = $("#search2").val().trim();
+      mblSearch = mblSearch.replace(/\s+/g, "").toLowerCase();
+      console.log(mblSearch);
+      window.location.pathname = `/selected/${mblSearch}`;
+      console.log("/api/" + mblSearch)
+    }
+
+
   });
 });
+

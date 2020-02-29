@@ -6,6 +6,8 @@ const axios = require("axios")
 // module.export function for exporting routes to server.js file
 module.exports = function (app) {
 
+
+
   // DON"T DELETE YET PLEASE//////////////////////////////
   // app.get info from movie db for specific title info
   // app.post("/api/selected", function (req, res) {
@@ -59,6 +61,42 @@ module.exports = function (app) {
 
   //   //////////////////////////////////////////////////////////////////////////////////////////////
 
+  app.get("/api/profile/:id/all", function (req, res) {
+    db.Shows.findAndCountAll({
+      // where: {
+      //   want_to_watch: true,
+      //   watching: false,
+      //   completed: false
+      // }
+    }).then(function (want) {
+      res.json(want);
+    })
+  })
+
+  // app.get("/api/profile/:id/watch", function (req, res) {
+  //   db.Shows.findAndCountAll({
+  //     where: {
+  //       want_to_watch: false,
+  //       watching: true,
+  //       completed: false
+  //     }
+  //   }).then(function (watch) {
+  //     res.json(watch);
+  //   });
+  // })
+
+  // app.get("/api/profile/:id/completed", function (req, res) {
+  //   db.Shows.findAndCountAll({
+  //     where: {
+  //       want_to_watch: false,
+  //       watching: false,
+  //       completed: true
+  //     }
+  //   }).then(function (completed) {
+  //     res.json(completed)
+  //   })
+  // })
+
   // app.get for getting all movie information related to a user
   app.get("/api/profile/:id", function (req, res) {
     db.Shows.findAll({
@@ -67,6 +105,7 @@ module.exports = function (app) {
       },
       include: [db.User]
     }).then(function (result) {
+      console.log(result);
       // console.log(result);
       res.json(result);
     });
