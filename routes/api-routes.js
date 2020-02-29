@@ -6,6 +6,8 @@ const axios = require("axios")
 // module.export function for exporting routes to server.js file
 module.exports = function (app) {
 
+
+
   // DON"T DELETE YET PLEASE//////////////////////////////
   // app.get info from movie db for specific title info
   // app.post("/api/selected", function (req, res) {
@@ -59,6 +61,42 @@ module.exports = function (app) {
 
   //   //////////////////////////////////////////////////////////////////////////////////////////////
 
+  app.get("/api/profile/:id/all", function (req, res) {
+    db.Shows.findAndCountAll({
+      // where: {
+      //   want_to_watch: true,
+      //   watching: false,
+      //   completed: false
+      // }
+    }).then(function (want) {
+      res.json(want);
+    })
+  })
+
+  // app.get("/api/profile/:id/watch", function (req, res) {
+  //   db.Shows.findAndCountAll({
+  //     where: {
+  //       want_to_watch: false,
+  //       watching: true,
+  //       completed: false
+  //     }
+  //   }).then(function (watch) {
+  //     res.json(watch);
+  //   });
+  // })
+
+  // app.get("/api/profile/:id/completed", function (req, res) {
+  //   db.Shows.findAndCountAll({
+  //     where: {
+  //       want_to_watch: false,
+  //       watching: false,
+  //       completed: true
+  //     }
+  //   }).then(function (completed) {
+  //     res.json(completed)
+  //   })
+  // })
+
   // app.get for getting all movie information related to a user
   app.get("/api/profile/:id", function (req, res) {
     db.Shows.findAll({
@@ -67,6 +105,7 @@ module.exports = function (app) {
       },
       include: [db.User]
     }).then(function (result) {
+      console.log(result);
       // console.log(result);
       res.json(result);
     });
@@ -88,17 +127,6 @@ module.exports = function (app) {
   // route for adding movies and shows to our database
   app.post("/api/watchlist", function (req, res) {
     if (req.user) {
-    // var string = J-0987O0N.stringify(req.body)
-    // console.log( "our data" + string);
-    // let show = {
-    //   api_id: req.body.api_id,
-    //   title: req.body.title,
-    //   poster_path: req.body.poster_path,
-    //   media_type: req.body.media_type,
-    //   want_to_watch: req.body.want_to_watch,
-    //   watching: req.body.watching,
-    //   complete: req.body.complete
-    // }
     db.Shows.create({
         api_id: req.body.api_id,
         title: req.body.title,
@@ -106,16 +134,10 @@ module.exports = function (app) {
         media_type: req.body.media_type,
         want_to_watch: req.body.want_to_watch,
         watching: req.body.watching,
-        complete: req.body.complete,
+        completed: req.body.completed,
         UserId: req.user.id
-    }).then(function (data) {
-      console.log("create data", data)
-      // if (!data) {
-        // db.Shows.create({show})
-      // } 
-      // else {
-      //   db.Shows.update(show)
-      // }
+    }).then(function(data) {
+      res.json({message: "success"});
     }).catch(function(e) {
       console.log(e);
     })
