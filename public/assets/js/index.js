@@ -51,24 +51,21 @@ $(document).ready(function () {
   // click event for search functionality
   $(".searchform").on("submit", function (event) {
     event.preventDefault();
+    console.log("do we get this far in search");
 
+    var title = $("#search").val().trim();
+    title = title.replace(/\s+/g, "%20");
 
-    var search = $("#search").val().trim();
-    search = search.replace(/\s+/g, "").toLowerCase();
-
-    if(search) {
-      console.log(search);
-      location.assign("/selected");
-      console.log("/api/" + search);
+    if (title) {
+      
+      window.location.pathname = `/selected/${title}`;
     } else {
       var mblSearch = $("#search2").val().trim();
-      mblSearch = mblSearch.replace(/\s+/g, "").toLowerCase();
+      mblSearch = mblSearch.replace(/\s+/g, "%20");
       console.log(mblSearch);
-      location.assign("/selected");
+      window.location.pathname = `/selected/${mblSearch}`;
       console.log("/api/" + mblSearch)
     }
-
-    search.val("");
-    mblSearch.val("");
   });
 });
+
