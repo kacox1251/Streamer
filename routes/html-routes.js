@@ -323,47 +323,40 @@ module.exports = function (app) {
   // Selected Movie / TV Page:
   // on click for search redirects to selected with movie title
   app.get("/selected/:title", isAuthenticated, function (req, res) {
-    // if (req.user) {
-    const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${req.params.title}&page=1&include_adult=false&region=US`
-    // console.log("search url: ", queryURL);
-    axios
-      .get(queryURL)
-      .then(function (data) {
-        // console.log(data, "SEARCH DATA");
-        // console.log("searchData results", data.data.results);
+    if (req.user) {
+      const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${req.params.title}&page=1&include_adult=false&region=US`
+      // console.log("search url: ", queryURL);
+      axios
+        .get(queryURL)
+        .then(function (data) {
+          // console.log(data, "SEARCH DATA");
+          // console.log("searchData results", data.data.results);
 
-        let results = data.data.results;
-        console.log(results, "RESULTS")
+          let results = data.data.results;
+          console.log(results, "RESULTS")
 
-        let newArray = [];
-        for (i = 0; i < results.length; i++) {
-          newArray.push(
-            {
-              api_id: results[i].id,
-              summary: results[i].overview,
-              poster: results[i].poster_path,
-              title: results[i].title || results[i].name,
-              rating: results[i].vote_average
-            }
-          );
-        }
+          let newArray = [];
+          for (i = 0; i < results.length; i++) {
+            newArray.push(
+              {
+                api_id: results[i].id,
+                summary: results[i].overview,
+                poster: results[i].poster_path,
+                title: results[i].title || results[i].name,
+                rating: results[i].vote_average
+              }
+            );
+          }
 
-        let dataPass = {
-          selected: newArray
-        }
+          let dataPass = {
+            selected: newArray
+          }
 
-        // console.log(dataPass, "<<<DATA PASS")
-        // let dataPass = {
-        //   array: [{
-        //     api_id: results.id,
-        //     summary: results.overview,
-        //     poster: results.poster_path,
-        //     title: results.title || results.name,
-        //     rating: results.vote_average
-        //   }]
-        // }
-        res.render("selected", dataPass);
-      });
+          res.render("selected", dataPass);
+        });
+    } else {
+      res.render("login");
+    }
   });
   ////////////////////////////////////////////////////////////
 
@@ -424,5 +417,9 @@ module.exports = function (app) {
         res.render("selected", dataPass); // then the object for handlebars
       });
   })
+
+  app.get("/search", function (req, res) {
+    res.render("search");
+  });
 
 }
