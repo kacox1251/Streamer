@@ -54,14 +54,14 @@ $(document).ready(function () {
     console.log("do we get this far in search");
 
     var title = $("#search").val().trim();
-    title = title.replace(/\s+/g, "").toLowerCase();
+    title = title.replace(/\s+/g, "%20");
 
     if (title) {
-
+      
       window.location.pathname = `/selected/${title}`;
     } else {
       var mblSearch = $("#search2").val().trim();
-      mblSearch = mblSearch.replace(/\s+/g, "").toLowerCase();
+      mblSearch = mblSearch.replace(/\s+/g, "%20");
       console.log(mblSearch);
       window.location.pathname = `/selected/${mblSearch}`;
       console.log("/api/" + mblSearch)
