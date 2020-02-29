@@ -61,7 +61,7 @@ $(document).ready(function () {
       window.location.pathname = `/selected/${title}`;
     } else {
       var mblSearch = $("#search2").val().trim();
-      mblSearch = mblSearch.replace(/\s+/g, "%20").toLowerCase();
+      mblSearch = mblSearch.replace(/\s+/g, "%20");
       console.log(mblSearch);
       window.location.pathname = `/selected/${mblSearch}`;
       console.log("/api/" + mblSearch)

@@ -361,7 +361,6 @@ module.exports = function (app) {
 
           let newArray = [];
           for (i = 0; i < results.length; i++) {
-            console.log("pster path",results[0].poster_path);
             newArray.push(
               {
                 api_id: results[i].id,
