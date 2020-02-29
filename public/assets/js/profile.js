@@ -1,6 +1,29 @@
 
 $(document).ready(function () {
 
+  $(".carouselImage").on("click", function (event) {
+    event.preventDefault();
+
+    console.log("this", this)
+    //   let movie = $(this).data("movie");
+    //   console.log("this movie ", movie);
+    //   console.log("this tv ", $(this).data("tv"));
+
+
+    let id = $(this).data("id");
+
+
+    let type = $(this).data("movie") === undefined ? "tv" : "movie";
+    // to be injected to the api address later
+
+    moveToSelected(type, id);
+  });
+
+  const moveToSelected = function(type, id) {
+
+    window.location.pathname = `/selected/${type}/${id}`;
+  };
+
   // // get for carousel information
   // function getCarousel() {
 
