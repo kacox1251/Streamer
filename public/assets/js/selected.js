@@ -107,18 +107,5 @@ $(document).ready(function () {
       });
   });
 
-  $("#delete-watchlist").click(function (event) {
-    event.preventDefault();
-
-    // let showToDelete = $(this).whatever we decide on
-    // let userId = $(this).however we figure out how to grab the current user
-    // how are we passing this over? 
-    $.ajax({
-      method: "DELETE",
-      url: "/api/selected/:id", // is this the correct route
-    }).then(function (response) {
-      location.href("/profile");
-    });
-  });
 
 });
