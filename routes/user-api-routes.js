@@ -13,9 +13,11 @@ module.exports = function (app) {
   // app.post for signup
   app.post('/api/signup', function (req, res) {
     db.User.create({
+      username: req.body.username,
       email: req.body.email,
       password: req.body.password
     }).then(function () {
+      // console.log("got here 1")
       res.redirect(307, '/api/login')
     })
       .catch(function (err) {

@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-  const generateOwl = () => {
+  const generateOwl = function() {
     $('.owl-carousel').owlCarousel({
       loop: true,
       margin: 10,
@@ -43,7 +43,7 @@ $(document).ready(function () {
     moveToSelected(type, id);
   });
 
-  const moveToSelected = (type, id) => {
+  const moveToSelected = function(type, id) {
 
     window.location.pathname = `/selected/${type}/${id}`;
   };
