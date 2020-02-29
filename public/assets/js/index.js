@@ -49,23 +49,24 @@ $(document).ready(function () {
   };
 
   // click event for search functionality
-  $(".searchform").on("submit", function(event) {
+  $(".searchform").on("submit", function (event) {
     event.preventDefault();
+    console.log("do we get this far in search");
 
+    var title = $("#search").val().trim();
+    title = title.replace(/\s+/g, "").toLowerCase();
 
-    var search = $("#search").val().trim();
-    search = search.replace(/\s+/g, "").toLowerCase();
+    console.log(title);
+    window.location.pathname = `/selected/${title}`;
 
-    if(search) {
-      console.log(search);
-      location.assign("/selected");
-      console.log("/api/" + search);
-    } else {
-      var mblSearch = $("#search2").val().trim();
-      mblSearch = mblSearch.replace(/\s+/g, "").toLowerCase();
-      console.log(mblSearch);
-      location.assign("/selected");
-      console.log("/api/" + mblSearch)
-    }
+    // if (title) {
+    //   console.log("/api/" + search);
+    // } else {
+    //   var mblSearch = $("#search2").val().trim();
+    //   mblSearch = mblSearch.replace(/\s+/g, "").toLowerCase();
+    //   console.log(mblSearch);
+    //   location.assign(`/selected/${mblSearch}`);
+    //   console.log("/api/" + mblSearch)
+    // }
   });
 });
