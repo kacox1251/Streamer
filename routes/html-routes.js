@@ -293,26 +293,37 @@ module.exports = function (app) {
         where: {
           UserId: req.user.id
         }
-      }).then(function (shows) {
-        let want_to_watch = [];
-        let watching = [];
-        let completed = [];
-        console.log("AMBER", shows)
-        for (let i = 0; i < shows.length; i++) {
-          const show = shows[i].dataValues;
-
-          if (show.want_to_watch && !show.watching && !show.completed) {
-            want_to_watch.push(show);
-            console.log("want to watch", want_to_watch);
-          } else if (!show.want_to_watch && show.watching && !show.completed) {
-            watching.push(show);
-            console.log("watching", watching);
-          } else if (!show.want_to_watch && !show.watching && show.completed) {
-            completed.push(show);
-            console.log("completed", completed);
-          }
-        }
-        res.render("profile", { want_to_watch, watching, completed });
+      }).then(function(shows) {
+        db.User.findAll({
+            where: {
+                id: req.user.id
+            }
+        }).then(function(user) {
+            // console.log("user", user[0].dataValues);
+            let username = user[0].dataValues.username;
+            let want_to_watch= [];
+            let watching = [];
+            let completed = [];
+            for (let i = 0; i < shows.length; i++) {
+              let show = shows[i].dataValues;
+              let title = show.title;
+              title = title.replace(/\s+/g, '%20');
+              // console.log("title",title)
+              show.title = title;
+    
+              if (show.want_to_watch && !show.watching && !show.completed) {
+                want_to_watch.push(show);
+                // console.log("want to watch", want_to_watch);
+              } else if (!show.want_to_watch && show.watching && !show.completed) {
+                watching.push(show);
+                // console.log("watching",watching);
+              } else if (!show.want_to_watch && !show.watching && show.completed) {
+                completed.push(show);
+                // console.log("completed", completed);
+              }
+            }
+            res.render("profile", { username, want_to_watch, watching, completed });
+        })
       })
     } else {
       res.render("login");
@@ -322,48 +333,31 @@ module.exports = function (app) {
   // DONT DELETE YET PLEASE//////////////////////////////
   // Selected Movie / TV Page:
   // on click for search redirects to selected with movie title
+  // app.get("/selected/:title", isAuthenticated, function (req, res) {
+  //   if (req.user) {
+  //     res.render("selected");
+  //   } else {
+  //     res.render("index");
+  //   }
+  // });
+ 
   app.get("/selected/:title", isAuthenticated, function (req, res) {
-    // if (req.user) {
-    const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${req.params.title}&page=1&include_adult=false&region=US`
-    // console.log("search url: ", queryURL);
-    axios
-      .get(queryURL)
-      .then(function (data) {
-        // console.log(data, "SEARCH DATA");
-        // console.log("searchData results", data.data.results);
+    if (req.user) {
+      const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${req.params.title}&page=1&include_adult=false&region=US`
+      console.log("search url: ", queryURL);
+      axios
+        .get(queryURL)
+        .then(function (searchData) {
+          console.log("searchData", searchData.data.results);
+          // pass res.render the information to cycle through
+          res.render("selected");
+        }).catch(function(e) {
+          console.log(e);
+        });
+    } else {
+      res.render("login");
+    }
 
-        let results = data.data.results;
-        console.log(results, "RESULTS")
-
-        let newArray = [];
-        for (i = 0; i < results.length; i++) {
-          newArray.push(
-            {
-              api_id: results[i].id,
-              summary: results[i].overview,
-              poster: results[i].poster_path,
-              title: results[i].title || results[i].name,
-              rating: results[i].vote_average
-            }
-          );
-        }
-
-        let dataPass = {
-          selected: newArray
-        }
-
-        // console.log(dataPass, "<<<DATA PASS")
-        // let dataPass = {
-        //   array: [{
-        //     api_id: results.id,
-        //     summary: results.overview,
-        //     poster: results.poster_path,
-        //     title: results.title || results.name,
-        //     rating: results.vote_average
-        //   }]
-        // }
-        res.render("selected", dataPass);
-      });
   });
   ////////////////////////////////////////////////////////////
 
@@ -400,8 +394,9 @@ module.exports = function (app) {
     res.render("login")
   })
 
+   // different query needed for getting to selected show from profile page, will need to use the :type/:id route for this functionality and will need to store media type in model
   //THIS IS THE WORKING ROUTE FOR SELECTED
-  app.get("/selected/:type/:id", (req, res) => {
+  app.get("/selected/:type/:id", function(req, res) {
     const queryURL = `https://api.themoviedb.org/3/${req.params.type}/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`;
     console.log("queryURL", queryURL)
     axios
