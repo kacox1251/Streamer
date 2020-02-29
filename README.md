@@ -1,5 +1,6 @@
 # Streamer
 
+![Image of Logo](./public/assets/img/streamer-logo.png)
 
 ## Description 
 Streamer is an application that allows users to create an account, 
@@ -28,7 +29,8 @@ SO that I don’t lose a show or movie.
 
 
 ## Deployment 
-
+    * [Heroku](https://infinite-cliffs-65236.herokuapp.com/)
+    * [Github](https://github.com/kacox1251/Streamer)
 
 
 ## Future Development 
@@ -63,7 +65,7 @@ __CSS Framework:__
 
 __Favicon Created with:__
 https://favicon.io/
-![Favicon](./assets/images/Favicon/favicon-16x16.png) 
+![Favicon](./public/assets/img/favicon_io/favicon-16x16.png) 
 
 
 ## License
