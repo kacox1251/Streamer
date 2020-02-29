@@ -287,7 +287,7 @@ module.exports = function (app) {
 
 
   // isAuthenticated, ADD ID HERE
-  app.get("/profile/:id", isAuthenticated, function(req, res) {
+  app.get("/profile/:id", isAuthenticated, function (req, res) {
     if (req.user) {
       db.Shows.findAll({
         where: {
@@ -326,7 +326,7 @@ module.exports = function (app) {
         })
       })
     } else {
-      res.render("index");
+      res.render("login");
     }
   });
 
@@ -357,17 +357,25 @@ module.exports = function (app) {
     } else {
       res.render("login");
     }
+
   });
   ////////////////////////////////////////////////////////////
 
   // DONT DELETE YET PLEASE//////////////////////////////
-  app.get("/api/selected/", function (req, res) {
-    // if (req.user) {
-    res.render("selected", req.body[0]);
-    // } else {
-    // res.render("index");
-    // }
-  });
+  // app.get("/api/selected/", function (req, res) {
+  //   if (req.user) {
+  //     const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${req.params.typ}&language=en-US&query=${title}&page=1&include_adult=false&region=US`
+  //     axios
+  //       .get(queryURL)
+  //       .then(function (searchData) {
+  //         console.log("searchData", searchData);
+  //       })
+
+  //     // res.render("selected", req.body[0]);
+  //   } else {
+  //     res.render("index");
+  //   }
+  // });
   // })
   ////////////////////////////////////////////////////////////
 
@@ -396,15 +404,18 @@ module.exports = function (app) {
       .then(function (data) {
         console.log(data.data.id, "THIS IS THE DATA");
         let dataPass = {
-          // selected: {
-          api_id: data.data.id,
-          summary: data.data.overview,
-          poster: data.data.poster_path,
-          title: data.data.title || data.data.name,
-          rating: data.data.vote_average
-          // }
+          selected: [{
+            // selected: {
+            api_id: data.data.id,
+            summary: data.data.overview,
+            poster: data.data.poster_path,
+            title: data.data.title || data.data.name,
+            rating: data.data.vote_average
+            // }
+          }]
         }
-        console.log(dataPass);
+        console.log(dataPass, "DATA PASS ARRAY OBJECT");
+
         res.render("selected", dataPass); // then the object for handlebars
       });
   })

@@ -24,6 +24,7 @@ $(document).ready(function () {
     window.location.pathname = `/selected/${type}/${id}`;
   };
 
+
   // // get for carousel information
   // function getCarousel() {
 
