@@ -287,58 +287,95 @@ module.exports = function (app) {
 
 
   // isAuthenticated, ADD ID HERE
-  app.get("/profile/:id", isAuthenticated, function(req, res) {
+  app.get("/profile/:id", isAuthenticated, function (req, res) {
     if (req.user) {
       db.Shows.findAll({
         where: {
           UserId: req.user.id
         }
       }).then(function(shows) {
-        let want_to_watch= [];
-        let watching = [];
-        let completed = [];
-        console.log("AMBER", shows)
-        for (let i = 0; i < shows.length; i++) {
-          const show = shows[i].dataValues;
-          
-          if (show.want_to_watch && !show.watching && !show.completed) {
-            want_to_watch.push(show);
-            console.log("want to watch", want_to_watch);
-          } else if (!show.want_to_watch && show.watching && !show.completed) {
-            watching.push(show);
-            console.log("watching",watching);
-          } else if (!show.want_to_watch && !show.watching && show.completed) {
-            completed.push(show);
-            console.log("completed", completed);
-          }
-        }
-        res.render("profile", { want_to_watch, watching, completed });
+        db.User.findAll({
+            where: {
+                id: req.user.id
+            }
+        }).then(function(user) {
+            // console.log("user", user[0].dataValues);
+            let username = user[0].dataValues.username;
+            let want_to_watch= [];
+            let watching = [];
+            let completed = [];
+            for (let i = 0; i < shows.length; i++) {
+              let show = shows[i].dataValues;
+              let title = show.title;
+              title = title.replace(/\s+/g, '%20');
+              // console.log("title",title)
+              show.title = title;
+    
+              if (show.want_to_watch && !show.watching && !show.completed) {
+                want_to_watch.push(show);
+                // console.log("want to watch", want_to_watch);
+              } else if (!show.want_to_watch && show.watching && !show.completed) {
+                watching.push(show);
+                // console.log("watching",watching);
+              } else if (!show.want_to_watch && !show.watching && show.completed) {
+                completed.push(show);
+                // console.log("completed", completed);
+              }
+            }
+            res.render("profile", { username, want_to_watch, watching, completed });
+        })
       })
     } else {
-      res.render("index");
+      res.render("login");
     }
   });
 
   // DONT DELETE YET PLEASE//////////////////////////////
   // Selected Movie / TV Page:
   // on click for search redirects to selected with movie title
+  // app.get("/selected/:title", isAuthenticated, function (req, res) {
+  //   if (req.user) {
+  //     res.render("selected");
+  //   } else {
+  //     res.render("index");
+  //   }
+  // });
+ 
   app.get("/selected/:title", isAuthenticated, function (req, res) {
     if (req.user) {
-      res.render("selected");
+      const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${req.params.title}&page=1&include_adult=false&region=US`
+      console.log("search url: ", queryURL);
+      axios
+        .get(queryURL)
+        .then(function (searchData) {
+          console.log("searchData", searchData.data.results);
+          // pass res.render the information to cycle through
+          res.render("selected");
+        }).catch(function(e) {
+          console.log(e);
+        });
     } else {
-      res.render("index");
+      res.render("login");
     }
+
   });
   ////////////////////////////////////////////////////////////
 
   // DONT DELETE YET PLEASE//////////////////////////////
-  app.get("/api/selected/", function (req, res) {
-    // if (req.user) {
-    res.render("selected", req.body[0]);
-    // } else {
-    // res.render("index");
-    // }
-  });
+  // app.get("/api/selected/", function (req, res) {
+  //   if (req.user) {
+  //     const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${req.params.typ}&language=en-US&query=${title}&page=1&include_adult=false&region=US`
+  //     axios
+  //       .get(queryURL)
+  //       .then(function (searchData) {
+  //         console.log("searchData", searchData);
+  //       })
+
+  //     // res.render("selected", req.body[0]);
+  //   } else {
+  //     res.render("index");
+  //   }
+  // });
   // })
   ////////////////////////////////////////////////////////////
 
@@ -357,12 +394,16 @@ module.exports = function (app) {
     res.render("login")
   })
 
+<<<<<<< HEAD
   app.get("/search", function (req, res) {
     res.render("search")
   })
 
+=======
+   // different query needed for getting to selected show from profile page, will need to use the :type/:id route for this functionality and will need to store media type in model
+>>>>>>> e8c4aa2b84721104b88dd9d2d63c9ccde51c53ba
   //THIS IS THE WORKING ROUTE FOR SELECTED
-  app.get("/selected/:type/:id", (req, res) => {
+  app.get("/selected/:type/:id", function(req, res) {
     const queryURL = `https://api.themoviedb.org/3/${req.params.type}/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`;
     console.log("queryURL", queryURL)
     axios
@@ -370,15 +411,17 @@ module.exports = function (app) {
       .then(function (data) {
         console.log(data.data.id, "THIS IS THE DATA");
         let dataPass = {
-          // selected: {
-          api_id: data.data.id,
-          summary: data.data.overview,
-          poster: data.data.poster_path,
-          title: data.data.title || data.data.name,
-          rating: data.data.vote_average
-          // }
+          selected: [{
+            // selected: {
+            api_id: data.data.id,
+            summary: data.data.overview,
+            poster: data.data.poster_path,
+            title: data.data.title || data.data.name,
+            rating: data.data.vote_average
+            // }
+          }]
         }
-        console.log(dataPass);
+        console.log(dataPass, "DATA PASS ARRAY OBJECT");
 
         res.render("selected", dataPass); // then the object for handlebars
       });
