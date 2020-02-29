@@ -18,140 +18,140 @@ module.exports = function (app) {
     let hardcodeTV = [
       {
         "name": "The Simpsons",
-        "id": 456,
+        "api_id": 456,
         "vote_average": 7.2,
         "overview": "Set in Springfield, the average American town, the show focuses on the antics and everyday adventures of the Simpson family; Homer, Marge, Bart, Lisa and Maggie, as well as a virtual cast of thousands. Since the beginning, the series has been a pop culture icon, attracting hundreds of celebrities to guest star. The show has also made name for itself in its fearless satirical take on politics, media and American life in general.",
         "poster_path": "/qcr9bBY6MVeLzriKCmJOv1562uY.jpg"
       },
       {
         "name": "Star Wars: The Clone Wars",
-        "id": 4194,
+        "api_id": 4194,
         "vote_average": 7.8,
         "overview": "Yoda, Obi-Wan Kenobi, Anakin Skywalker, Mace Windu and other Jedi Knights lead the Grand Army of the Republic against the droid army of the Separatists.",
         "poster_path": "/p6s2svEHHLsQ1TOw4Si54c1dD5L.jpg"
       },
       {
         "name": "The Flash",
-        "id": 60735,
+        "api_id": 60735,
         "vote_average": 6.8,
         "overview": "After a particle accelerator causes a freak storm, CSI Investigator Barry Allen is struck by lightning and falls into a coma. Months later he awakens with the power of super speed, granting him the ability to move through Central City like an unseen guardian angel. Though initially excited by his newfound powers, Barry is shocked to discover he is not the only \"meta-human\" who was created in the wake of the accelerator explosion -- and not everyone is using their new powers for good. Barry partners with S.T.A.R. Labs and dedicates his life to protect the innocent. For now, only a few close friends and associates know that Barry is literally the fastest man alive, but it won't be long before the world learns what Barry Allen has become...The Flash.",
         "poster_path": "/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg"
       },
       {
         "name": "The Walking Dead",
-        "id": 1402,
+        "api_id": 1402,
         "vote_average": 7.3,
         "overview": "Sheriff's deputy Rick Grimes awakens from a coma to find a post-apocalyptic world dominated by flesh-eating zombies. He sets out to find his family and encounters many other survivors along the way.",
         "poster_path": "/5l10EjdgPxu8Gbl5Ww6SWkVQH6T.jpg"
       },
       {
         "name": "Law & Order: Special Victims Unit",
-        "id": 2734,
+        "api_id": 2734,
         "vote_average": 6.6,
         "overview": "In the criminal justice system, sexually-based offenses are considered especially heinous. In New York City, the dedicated detectives who investigate these vicious felonies are members of an elite squad known as the Special Victims Unit. These are their stories.",
         "poster_path": "/6t6r1VGQTTQecN4V0sZeqsmdU9g.jpg"
       },
       {
         "name": "Better Call Saul",
-        "id": 60059,
+        "api_id": 60059,
         "vote_average": 8.1,
         "overview": "Six years before Saul Goodman meets Walter White. We meet him when the man who will become Saul Goodman is known as Jimmy McGill, a small-time lawyer searching for his destiny, and, more immediately, hustling to make ends meet. Working alongside, and, often, against Jimmy, is “fixer” Mike Ehrmantraut. The series tracks Jimmy’s transformation into Saul Goodman, the man who puts “criminal” in “criminal lawyer\".",
         "poster_path": "/cU0kAjGjA6d2XjBzJMUIEVKiGDb.jpg"
       },
       {
         "name": "Doctor Who",
-        "id": 57243,
+        "api_id": 57243,
         "vote_average": 7,
         "overview": "The Doctor is a Time Lord: a 900 year old alien with 2 hearts, part of a gifted civilization who mastered time travel. The Doctor saves planets for a living—more of a hobby actually, and the Doctor's very, very good at it.",
         "poster_path": "/cDDb7WA2i7cENhkEEjXEDrXGyNL.jpg"
       },
       {
         "name": "Grey's Anatomy",
-        "id": 1416,
+        "api_id": 1416,
         "vote_average": 6.6,
         "overview": "Follows the personal and professional lives of a group of doctors at Seattle’s Grey Sloan Memorial Hospital.",
         "poster_path": "/jnsvc7gCKocXnrTXF6p03cICTWb.jpg"
       },
       {
         "name": "Outlander",
-        "id": 56570,
+        "api_id": 56570,
         "vote_average": 7.4,
         "overview": "The story of Claire Randall, a married combat nurse from 1945 who is mysteriously swept back in time to 1743, where she is immediately thrown into an unknown world where her life is threatened. When she is forced to marry Jamie, a chivalrous and romantic young Scottish warrior, a passionate affair is ignited that tears Claire's heart between two vastly different men in two irreconcilable lives.",
         "poster_path": "/70PRIpG1phOyphejeLwi0K8zdJo.jpg"
       },
       {
         "name": "Star Trek: Picard",
-        "id": 85949,
+        "api_id": 85949,
         "vote_average": 7.6,
         "overview": "Set twenty years after the events of Star Trek Nemesis, we follow the now-retired Admiral Picard into the next chapter of his life.",
         "poster_path": "/nIlAKIrLKxOeoEnc0Urb65yNCp.jpg"
       },
       {
         "name": "Riverdale",
-        "id": 69050,
+        "api_id": 69050,
         "vote_average": 7.5,
         "overview": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
         "poster_path": "/4X7o1ssOEvp4BFLim1AZmPNcYbU.jpg"
       },
       {
         "name": "Hawaii Five-0",
-        "id": 32798,
+        "api_id": 32798,
         "vote_average": 6.8,
         "overview": "Steve McGarrett returns home to Oahu, in order to find his father's killer. The governor offers him the chance to run his own task force (Five-0). Steve's team is joined by Chin Ho Kelly, Danny \"Danno\" Williams, and Kono Kalakaua.",
         "poster_path": "/sIdCKlmM2nU4akIvFQaAIiU8YES.jpg"
       },
       {
         "name": "Homeland",
-        "id": 1407,
+        "api_id": 1407,
         "vote_average": 7.4,
         "overview": "CIA officer Carrie Mathison is tops in her field despite being bipolar, which makes her volatile and unpredictable. With the help of her long-time mentor Saul Berenson, Carrie fearlessly risks everything, including her personal well-being and even sanity, at every turn.",
         "poster_path": "/6GAvS2e6VIRsms9FpVt33PsCoEW.jpg"
       },
       {
         "name": "Brooklyn Nine-Nine",
-        "id": 48891,
+        "api_id": 48891,
         "vote_average": 7.8,
         "overview": "A single-camera ensemble comedy following the lives of an eclectic group of detectives in a New York precinct, including one slacker who is forced to shape up when he gets a new boss.",
         "poster_path": "/dzj0oLZWe3qMgK4jlgdKWPVxxIx.jpg"
       },
       {
         "name": "The Outsider",
-        "id": 84661,
+        "api_id": 84661,
         "vote_average": 8.4,
         "overview": "When an insidious supernatural force edges its way into a seemingly straightforward investigation into the gruesome murder of a young boy, it leads a seasoned cop and an unorthodox investigator to question everything they believe in.",
         "poster_path": "/aMiPwPQjQI1EZN3xP2V0sSU37dc.jpg"
       },
       {
         "name": "Chicago Fire",
-        "id": 44006,
+        "api_id": 44006,
         "vote_average": 7.6,
         "overview": "An edge-of-your-seat view into the lives of everyday heroes committed to one of America's noblest professions. For the firefighters, rescue squad and paramedics of Chicago Firehouse 51, no occupation is more stressful or dangerous, yet so rewarding and exhilarating. These courageous men and women are among the elite who forge headfirst into danger when everyone else is running the other way and whose actions make the difference between life and death.",
         "poster_path": "/g9aoiYLbE3IrDiMms5fU4lv6BR4.jpg"
       },
       {
         "name": "Pokémon",
-        "id": 60572,
+        "api_id": 60572,
         "vote_average": 6.7,
         "overview": "Join Ash Ketchum, accompanied by his partner Pikachu, as he travels through many regions, meets new friends and faces new challenges on his quest to become a Pokémon Master.",
         "poster_path": "/2pcTUs20ysCdA6DZclaPmGXD6ph.jpg"
       },
       {
         "name": "Strike Back",
-        "id": 32573,
+        "api_id": 32573,
         "vote_average": 7.4,
         "overview": "The series follows John Porter, a former British Special Forces soldier, who is drafted back into service by Section 20, a fictional branch of the Secret Intelligence Service.",
         "poster_path": "/1SLMVuZP3gjcsa4wKELg2JXSMy2.jpg"
       },
       {
         "name": "DC's Legends of Tomorrow",
-        "id": 62643,
+        "api_id": 62643,
         "vote_average": 6.5,
         "overview": "When heroes alone are not enough ... the world needs legends. Having seen the future, one he will desperately try to prevent from happening, time-traveling rogue Rip Hunter is tasked with assembling a disparate group of both heroes and villains to confront an unstoppable threat — one in which not only is the planet at stake, but all of time itself. Can this ragtag team defeat an immortal threat unlike anything they have ever known?",
         "poster_path": "/yJ3xE11IDIe29LJsSbhzwt5Oxtd.jpg"
       },
       {
         "name": "The Voice",
-        "id": 37678,
+        "api_id": 37678,
         "vote_average": 5.3,
         "overview": "The strongest vocalists from across the United states compete in a blockbusters vocal competition, the winner becomes “The Voice.” The show's innovative format features four stages of competition: the blind auditions, the battle rounds, the knockouts and, finally, the live performance shows.",
         "poster_path": "/5bAzxOZRliSNyuGj3xdVgBLaPup.jpg"
@@ -293,7 +293,7 @@ module.exports = function (app) {
         where: {
           UserId: req.user.id
         }
-      }).then(function(shows) {
+      }).then(function (shows) {
         db.User.findAll({
             where: {
                 id: req.user.id
@@ -345,24 +345,44 @@ module.exports = function (app) {
   //     res.render("index");
   //   }
   // });
- 
+
   app.get("/selected/:title", isAuthenticated, function (req, res) {
     if (req.user) {
       const queryURL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${req.params.title}&page=1&include_adult=false&region=US`
-      console.log("search url: ", queryURL);
+      // console.log("search url: ", queryURL);
       axios
         .get(queryURL)
-        .then(function (searchData) {
-          console.log("searchData", searchData.data.results);
-          // pass res.render the information to cycle through
-          res.render("selected");
-        }).catch(function(e) {
+        .then(function (data) {
+          // console.log(data, "SEARCH DATA");
+          // console.log("searchData results", data.data.results);
+
+          let results = data.data.results;
+          console.log(results, "RESULTS")
+
+          let newArray = [];
+          for (i = 0; i < results.length; i++) {
+            newArray.push(
+              {
+                api_id: results[i].id,
+                summary: results[i].overview,
+                poster: results[i].poster_path,
+                title: results[i].title || results[i].name,
+                rating: results[i].vote_average
+              }
+            );
+          }
+
+          let dataPass = {
+            selected: newArray
+          }
+
+          res.render("selected", dataPass);
+        }).catch(function (e) {
           console.log(e);
         });
     } else {
       res.render("login");
     }
-
   });
   ////////////////////////////////////////////////////////////
 
@@ -399,9 +419,9 @@ module.exports = function (app) {
     res.render("login")
   })
 
-   // different query needed for getting to selected show from profile page, will need to use the :type/:id route for this functionality and will need to store media type in model
+  // different query needed for getting to selected show from profile page, will need to use the :type/:id route for this functionality and will need to store media type in model
   //THIS IS THE WORKING ROUTE FOR SELECTED
-  app.get("/selected/:type/:id", function(req, res) {
+  app.get("/selected/:type/:id", function (req, res) {
     const queryURL = `https://api.themoviedb.org/3/${req.params.type}/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`;
     console.log("queryURL", queryURL)
     axios
@@ -424,9 +444,13 @@ module.exports = function (app) {
         // console.log(dataPass, "DATA PASS ARRAY OBJECT");
 
         res.render("selected", dataPass); // then the object for handlebars
-      }).catch(function(e) {
+      }).catch(function (e) {
         console.log(e);
       });
   })
+
+  app.get("/search", function (req, res) {
+    res.render("search");
+  });
 
 }
